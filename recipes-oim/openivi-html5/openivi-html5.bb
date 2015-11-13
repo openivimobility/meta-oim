@@ -7,11 +7,11 @@ inherit pkgconfig cmake_qt5
 
 PR="0"
 
-SRCREV = "8d2be065a0122046546c0c226f72a01d8b02eb02"
-PV = "0.0+git${SRCPV}"
+SRCREV = "${AUTOREV}"
+PV = "0.1+git${SRCPV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/cajun-rat/openivi-html5.git"
+SRC_URI = "git://github.com/openivimobility/openivi-html5.git"
 
 # SYSTEMD_SERVICE_${PN} = "sota-client.service sota-client.timer"
 
@@ -22,7 +22,12 @@ DEPENDS = "qtbase-native qtbase qtwebkit "
 
 S = "${WORKDIR}/git"
 
+FILES_${PN} = "/usr/bin/openivi-html5 /usr/share/openivi/*"
+
 do_install() {
-	install -d ${D}${bindir}
-	install -m 0755 openivi-html5 ${D}${bindir} 
+  install -d ${D}${bindir}
+  install -m 0755 openivi-html5 ${D}${bindir}
+
+  install -d ${D}${datadir}/openivi/
+  cp -r ${S}/example ${D}${datadir}/openivi/
 }
