@@ -17,6 +17,10 @@ fi
 
 openivi-html5 -f &
 
+xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
+xrandr --addmode HDMI1 1280x800
+xrandr --output HDMI1 --mode 1280x800 --rotate inverted --auto
+
 START_APPLETS=showdesktop,windowselector
 END_APPLETS=clock,battery,$KEYBOARD_APPLET,systray,startup-notify,notify
 END_APPLETS=openmoko-panel-gsm,$END_APPLETS # feature-phone
