@@ -15,7 +15,7 @@ else
 fi
 
 
-openivi-html5 -f &
+openivi-html5 -f -u http://193.168.33.1:8000 &
 
 xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
 xrandr --addmode HDMI1 1280x800
