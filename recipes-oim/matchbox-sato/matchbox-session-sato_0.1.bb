@@ -9,7 +9,7 @@ SECTION = "x11"
 DEPENDS = "gconf-native"
 RDEPENDS_${PN} = "formfactor gtk-sato-engine matchbox-theme-sato gtk-theme-sato matchbox-panel-2 matchbox-desktop-sato matchbox-session gconf"
 PR = "r30"
-PV = "0.3"
+PV = "0.4"
 
 # This package is architecture specific because the session script is modified
 # based on the machine architecture.
