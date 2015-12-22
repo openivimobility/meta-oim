@@ -15,11 +15,11 @@ else
 fi
 
 
-openivi-html5 -f -u http://193.168.33.1:8000 &
+openivi-html5 -f -u http://192.168.33.1:8000 &
 
-xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
-xrandr --addmode HDMI1 1280x800
-xrandr --output HDMI1 --mode 1280x800 --rotate inverted --auto
+xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
+xrandr --addmode HDMI1 1024x768p
+xrandr --output HDMI1 --mode 1024x768p
 
 START_APPLETS=showdesktop,windowselector
 END_APPLETS=clock,battery,$KEYBOARD_APPLET,systray,startup-notify,notify
