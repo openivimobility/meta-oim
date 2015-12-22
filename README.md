@@ -12,7 +12,7 @@
 
 After that run:
 
-    bitbake -k core-image-sato
+    bitbake -k openivi-image
 
 This will take a while (1+ hours). When that completes, you can run:
 
