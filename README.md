@@ -17,3 +17,18 @@ After that run:
 This will take a while (1+ hours). When that completes, you can run:
 
     runqemu qemux86
+
+## Build a jaspar image
+
+
+    git clone -b jethro http://git.yoctoproject.org/git/poky
+    cd poky
+    git clone -b jethro git@github.com:meta-qt5/meta-qt5.git
+    git clone -b jethro git://git.yoctoproject.org/meta-intel
+    git clone -b jethro git://git.openembedded.org/meta-openembedded
+    git clone git@github.com:openivimobility/meta-oim.git
+    export TEMPLATECONF=meta-oim/meta-jaspar/conf
+    source oe-init-build-env
+    bitbake -k openivi-image
+
+This will build a genericx86-64 image, which you can `dd` to a usb and run. Currently a qemux86-64 image does not build (due to webkitgtk)
