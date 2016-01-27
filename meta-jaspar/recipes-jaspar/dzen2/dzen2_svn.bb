@@ -9,7 +9,7 @@ PV = "0.8.5+svnr${SRCPV}"
 PR = "r4"
 EXTRA_OEMAKE = 'all -C ${S}'
 
-SRC_URI = "svn://dzen.googlecode.com/svn/;module=trunk;proto=http \
+SRC_URI = "svn://dzen.googlecode.com/svn/;module=trunk;protocol=http \
 	   file://dzen-extras.tar.gz \
 	   file://Makefile"
 
