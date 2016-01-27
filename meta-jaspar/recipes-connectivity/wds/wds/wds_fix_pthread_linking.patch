@@ -1,0 +1,40 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bde483a..3a4bb0e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 2.8)
+ 
+-project(wds CXX)
++project(wds C CXX)
+ 
+ set(WDS_VERSION_MAJOR 0)
+ set(WDS_VERSION_MINOR 1)
+diff --git a/libwds/rtsp/CMakeLists.txt b/libwds/rtsp/CMakeLists.txt
+index f058066..47aeeff 100644
+--- a/libwds/rtsp/CMakeLists.txt
++++ b/libwds/rtsp/CMakeLists.txt
+@@ -1,3 +1,4 @@
++set(THREADS_PTHREAD_ARG 0)
+ #FIXME in the future: with cmake 2.8.12 and up it's better
+ #to use target_compile_options or add_compile_options
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -fvisibility=hidden -fPIC")
+@@ -24,6 +25,9 @@ ADD_FLEX_BISON_DEPENDENCY(HeaderLexer Parser)
+ FLEX_TARGET(ErrorLexer errorlexer.l ${PARSER_GEN_DIR}/errorscanner.cpp COMPILE_FLAGS "-L -P error_ ${PARSER_DEBUG_OPTIONS}")
+ ADD_FLEX_BISON_DEPENDENCY(ErrorLexer Parser)
+ 
++set(THREADS_PREFER_PTHREAD_FLAG ON)
++find_package(Threads REQUIRED)
++
+ add_library(wdsrtsp OBJECT
+     ${BISON_Parser_OUTPUT_SOURCE}
+     ${FLEX_MessageLexer_OUTPUTS}
+@@ -44,6 +48,7 @@ add_library(wdsrtsp OBJECT
+ add_executable(test-wds tests.cpp $<TARGET_OBJECTS:wdsrtsp> $<TARGET_OBJECTS:wdscommon>)
+ add_executable(test-evdev test-evdev.cpp $<TARGET_OBJECTS:wdsrtsp> $<TARGET_OBJECTS:wdscommon>)
+ set(LINK_FLAGS ${LINK_FLAGS} "-Wl,-whole-archive")
+-target_link_libraries (test-wds)
++target_link_libraries (test-wds Threads::Threads)
++target_link_libraries (test-evdev Threads::Threads)
+ 
+ add_test(WfdTest test-wds)
