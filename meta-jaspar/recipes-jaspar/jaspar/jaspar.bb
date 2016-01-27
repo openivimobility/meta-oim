@@ -12,13 +12,9 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 #PV = "0.1+git${SRCPV}"
-PR="51"
+PR="52"
 
 
-#This package doesn't have any files for the rootfs in it, option needed to create an empty 
-# package so when the rootfs image is made it finds the mksd_xxx.deb package and doesn't complain
-# FILES_${PN} = ""
-ALLOW_EMPTY_${PN} = "1"
 S = "${WORKDIR}/git"
 
 FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
@@ -30,6 +26,7 @@ FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
                /usr/share/applications/navigation.desktop \
                /usr/share/applications/radio.desktop \
                /usr/share/applications/pair_bluetooth.desktop \
+               /usr/share/matchbox/vfolders/jaspar.directory \
                ${sysconfdir}/dbus-1/system.d/org.jaspar.conf \
                ${base_libdir}/systemd/system/jaspar.service \
               "
@@ -65,6 +62,8 @@ do_install () {
 
   install -d ${D}${datadir}/applications/
   cp ${S}/*.desktop ${D}${datadir}/applications/
+  install -d ${D}/usr/share/matchbox/vfolders
+  install ${S}/jaspar.directory ${D}/usr/share/matchbox/vfolders
 
   cp -r ${S}/ivi-connection-manager/ ${D}${datadir}/jaspar/
 
