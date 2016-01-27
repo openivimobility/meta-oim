@@ -6,4 +6,11 @@ LICENSE = "MIT"
 
 inherit core-image
 
-IMAGE_INSTALL += "packagegroup-core-x11-sato-games kernel-modules linux-firmware connman connman-tools connman-client epiphany jaspar wds"
+IMAGE_INSTALL += " \
+	packagegroup-core-x11-sato-base \
+	matchbox-terminal \
+	kernel-modules linux-firmware \
+	connman connman-tools connman-client \
+	bluez5-testtools \
+	epiphany jaspar wds \
+	"
