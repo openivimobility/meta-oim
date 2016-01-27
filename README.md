@@ -29,6 +29,6 @@ This will take a while (1+ hours). When that completes, you can run:
     git clone git@github.com:openivimobility/meta-oim.git
     export TEMPLATECONF=meta-oim/meta-jaspar/conf
     source oe-init-build-env
-    bitbake -k openivi-image
+    bitbake -k jaspar-image
 
 This will build a genericx86-64 image, which you can `dd` to a usb and run. Currently a qemux86-64 image does not build (due to webkitgtk)

@@ -1,4 +1,4 @@
-SUMMARY = "Main OpenIVI image"
+SUMMARY = "Main Jaspar image"
 
 IMAGE_FEATURES += "splash package-management x11-base x11-sato ssh-server-dropbear hwcodecs"
 
