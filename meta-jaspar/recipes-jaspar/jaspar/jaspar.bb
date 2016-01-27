@@ -12,7 +12,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 #PV = "0.1+git${SRCPV}"
-PR="50"
+PR="51"
 
 
 #This package doesn't have any files for the rootfs in it, option needed to create an empty 
@@ -43,6 +43,7 @@ RDEPENDS_${PN} += " \
   epiphany \
   xserver-common \
   xinit \
+  dzen2 \
   bash \
   vlc \
   python-dbus \
