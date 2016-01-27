@@ -1,0 +1,12 @@
+diff -Naur bluez-5.33.orig/src/bluetooth.service.in bluez-5.33/src/bluetooth.service.in
+--- bluez-5.33.orig/src/bluetooth.service.in	2016-01-27 11:57:57.141345706 +0100
++++ bluez-5.33/src/bluetooth.service.in	2016-01-27 11:58:31.913252605 +0100
+@@ -5,7 +5,7 @@
+ [Service]
+ Type=dbus
+ BusName=org.bluez
+-ExecStart=@libexecdir@/bluetoothd
++ExecStart=@libexecdir@/bluetoothd --compat
+ NotifyAccess=main
+ #WatchdogSec=10
+ #Restart=on-failure
