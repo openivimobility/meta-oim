@@ -8,7 +8,7 @@ SRC_URI = "https://github.com/karulis/pybluez/archive/${PV}.tar.gz"
 
 S = "${WORKDIR}/pybluez-${PV}"
 
-inherit distutils bluetooth
+inherit setuptools bluetooth
 
 DEPENDS = "python ${BLUEZ}"
 RDEPENDS_${PN} += " python-setuptools \

@@ -8,7 +8,6 @@ BusName=org.jaspar
 ExecStart=/usr/share/jaspar/ivi-connection-manager/ivi_connection_manager.py
 Environment="HOME=/home/root"
 Environment="DISPLAY=:0.0"
-Environment="PYTHONPATH=/usr/lib/python2.7/site-packages/PyBluez-0.22-py2.7-linux-x86_64.egg"
 
 [Install]
 WantedBy=multi-user.target
