@@ -11,8 +11,8 @@ SRC_URI = "git://git@github.com/advancedtelematic/jaspar.git;protocol=ssh \
 FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
-#PV = "0.1+git${SRCPV}"
-PR="53"
+PV = "0.1+git${SRCPV}"
+PR="54"
 
 
 S = "${WORKDIR}/git"
@@ -21,11 +21,13 @@ FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
                /usr/share/jaspar/ivi-connection-manager/* \
                /usr/share/jaspar/browser.sh \
                /usr/share/jaspar/monitor.py \
+               /usr/share/jaspar/assets/* \
                /usr/local/bin/*.sh \
                /usr/share/jaspar/epiphany-profile/ \
                /usr/share/applications/browser.desktop \
                /usr/share/applications/navigation.desktop \
                /usr/share/applications/radio.desktop \
+               /usr/share/applications/streaming.desktop \
                /usr/share/applications/pair_bluetooth.desktop \
                /usr/share/matchbox/vfolders/jaspar.directory \
                ${sysconfdir}/dbus-1/system.d/org.jaspar.conf \
@@ -67,6 +69,9 @@ do_install () {
 
   cp -r ${S}/ivi-connection-manager/ ${D}${datadir}/jaspar/
   cp ${S}/monitor.py ${D}${datadir}/jaspar/
+
+  install -d ${D}${datadir}/jaspar/assets
+  cp ${S}/assets/* ${D}${datadir}/jaspar/assets
 
   install -d ${D}${prefix}/local/
   install -d ${D}${prefix}/local/bin/
