@@ -23,7 +23,6 @@ This will take a while (1+ hours). When that completes, you can run:
 
     git clone -b jethro http://git.yoctoproject.org/git/poky
     cd poky
-    git clone -b jethro git@github.com:meta-qt5/meta-qt5.git
     git clone -b jethro git://git.yoctoproject.org/meta-intel
     git clone -b jethro git://git.openembedded.org/meta-openembedded
     git clone git@github.com:openivimobility/meta-oim.git
