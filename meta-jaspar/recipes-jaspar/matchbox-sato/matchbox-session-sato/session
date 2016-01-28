@@ -33,7 +33,7 @@ END_APPLETS=openmoko-panel-gsm,$END_APPLETS # feature-phone
 
 while true; do
 echo `/usr/share/jaspar/monitor.py`
-  sleep 0.1;
+  sleep 1;
 done | dzen2 -h 36 -fg black -bg gray -fn fixed &
 
 exec matchbox-window-manager -theme Sato -use_cursor $SHOWCURSOR $@
