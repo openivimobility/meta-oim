@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://session;endline=3;md5=f8a5c5b9c279e52dc094d10e11c2be6
 SECTION = "x11"
 DEPENDS = "gconf-native"
 RDEPENDS_${PN} = "formfactor gtk-sato-engine matchbox-theme-sato gtk-theme-sato matchbox-panel-2 matchbox-desktop-sato matchbox-session gconf"
-PR = "r34"
+PR = "r35"
 PV = "0.4"
 
 # This package is architecture specific because the session script is modified
