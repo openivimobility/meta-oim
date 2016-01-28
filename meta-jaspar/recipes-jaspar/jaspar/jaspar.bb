@@ -33,7 +33,7 @@ FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
 
 SYSTEMD_SERVICE_${PN} = "jaspar.service"
 
-DEPENDS = " systemd vlc"
+DEPENDS = " systemd"
 
 RDEPENDS_${PN} += " \
   systemd \
@@ -42,7 +42,6 @@ RDEPENDS_${PN} += " \
   xinit \
   dzen2 \
   bash \
-  vlc \
   python-dbus \
   python-ctypes \
   python-pyusb \
