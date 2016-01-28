@@ -19,16 +19,17 @@ fi
 # on top of the client side decorations.
 export GTK_CSD=0
 
-matchbox-desktop &
+while true; do
+  /usr/local/bin/monitor.py;
+  sleep 0.1;
+done | dzen2 -h 36 -fg black -bg gray -fn fixed &
+
 
 xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
 xrandr --addmode HDMI1 1024x768p
 xrandr --output HDMI1 --mode 1024x768p
 
-START_APPLETS=showdesktop,windowselector
-END_APPLETS=clock,battery,$KEYBOARD_APPLET,systray,startup-notify,notify
-END_APPLETS=openmoko-panel-gsm,$END_APPLETS # feature-phone
+matchbox-panel --orientation north &
 
-matchbox-panel --titlebar --start-applets $START_APPLETS --end-applets $END_APPLETS &
-
-exec matchbox-window-manager -theme Sato -use_desktop_mode decorated -use_cursor $SHOWCURSOR $@
+matchbox-window-manager -use_titlebar no -use_cursor $SHOWCURSOR &
+exec matchbox-desktop
