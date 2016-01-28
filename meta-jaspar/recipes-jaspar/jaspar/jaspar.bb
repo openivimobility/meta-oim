@@ -12,7 +12,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 #PV = "0.1+git${SRCPV}"
-PR="52"
+PR="53"
 
 
 S = "${WORKDIR}/git"
@@ -20,6 +20,7 @@ S = "${WORKDIR}/git"
 FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
                /usr/share/jaspar/ivi-connection-manager/* \
                /usr/share/jaspar/browser.sh \
+               /usr/share/jaspar/monitor.py \
                /usr/local/bin/*.sh \
                /usr/share/jaspar/epiphany-profile/ \
                /usr/share/applications/browser.desktop \
@@ -65,6 +66,7 @@ do_install () {
   install ${S}/jaspar.directory ${D}/usr/share/matchbox/vfolders
 
   cp -r ${S}/ivi-connection-manager/ ${D}${datadir}/jaspar/
+  cp ${S}/monitor.py ${D}${datadir}/jaspar/
 
   install -d ${D}${prefix}/local/
   install -d ${D}${prefix}/local/bin/

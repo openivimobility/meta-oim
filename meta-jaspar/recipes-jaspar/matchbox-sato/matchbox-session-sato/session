@@ -29,6 +29,11 @@ START_APPLETS=showdesktop,windowselector
 END_APPLETS=clock,battery,$KEYBOARD_APPLET,systray,startup-notify,notify
 END_APPLETS=openmoko-panel-gsm,$END_APPLETS # feature-phone
 
-matchbox-panel --titlebar --start-applets $START_APPLETS --end-applets $END_APPLETS &
+#matchbox-panel --titlebar --start-applets $START_APPLETS --end-applets $END_APPLETS &
 
-exec matchbox-window-manager -theme Sato -use_desktop_mode decorated -use_cursor $SHOWCURSOR $@
+while true; do
+echo `/usr/share/jaspar/monitor.py`
+  sleep 0.1;
+done | dzen2 -h 36 -fg black -bg gray -fn fixed &
+
+exec matchbox-window-manager -theme Sato -use_cursor $SHOWCURSOR $@
