@@ -1,0 +1,10 @@
+[Unit]
+Description=Headless UPnP Renderer
+After=connman.service
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/gmediarender/gmediarender.sh
+
+[Install]
+WantedBy=multi-user.target
