@@ -2,11 +2,11 @@ SUMMARY = "Headless UPnP Renderer"
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4325afd396febcb659c36b49533135d4"
 
-SRC_URI = "git://github.com/hzeller/gmrender-resurrect.git \
+SRC_URI = "git://github.com/cajun-rat/gmrender-resurrect.git \
 	   file://gmrender-resurrect.sh \
 	   file://gmrender-resurrect.service"
 
-SRCREV = "400361649f3d540c08001c0ad68222388e65be67"
+SRCREV = "99be5e0b39ed5be4367f8187a97b6fc57ce3ed74"
 PV= "0.0.0+gitr${SRCPV}"
 
 S = "${WORKDIR}/git"
@@ -26,7 +26,7 @@ do_install_append() {
 		install -m 644 ${WORKDIR}/gmrender-resurrect.service \
 			${D}/${systemd_unitdir}/system
 		install -d ${D}/usr/lib/gmediarender
-		install -m 644 ${WORKDIR}/gmrender-resurrect.sh \
+		install -m 755 ${WORKDIR}/gmrender-resurrect.sh \
 			${D}/usr/lib/gmediarender
 	fi
 }
