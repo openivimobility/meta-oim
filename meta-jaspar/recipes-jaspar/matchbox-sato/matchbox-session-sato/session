@@ -19,7 +19,6 @@ fi
 # on top of the client side decorations.
 export GTK_CSD=0
 
-matchbox-desktop &
 
 xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
 xrandr --addmode HDMI1 1024x768p
@@ -32,6 +31,7 @@ END_APPLETS=openmoko-panel-gsm,$END_APPLETS # feature-phone
 while true; do
 echo `/usr/share/jaspar/monitor.py`
   sleep 1;
-done | dzen2 -h 108 -fg black -bg gray -fn fixed -dock &
+done | dzen2 -h 36 -fg white -bg black -fn fixed -dock &
 
-exec matchbox-window-manager -theme Sato -use_cursor $SHOWCURSOR $@
+matchbox-window-manager -use_titlebar no -theme Sato -use_cursor $SHOWCURSOR &
+exec matchbox-desktop

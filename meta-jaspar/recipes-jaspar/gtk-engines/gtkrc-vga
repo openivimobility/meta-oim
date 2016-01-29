@@ -1,0 +1,204 @@
+# Sato GTK+ theme
+
+# Colours:
+#   green: 66cc33
+#   dark gray: cbccc9
+#   light gray: eeeeec
+
+gtk_button_images = 0
+gtk_menu_images = 0
+
+gtk_color_scheme = "bg_color:#eeeeec;fg_color:#555753;text_color:#555753;base_color:#fff;selected_bg_color:#d04437;selected_fg_color:#555753"
+
+style "default"
+{
+
+  bg_pixmap[NORMAL] = "Background_1366x768.png"
+	xthickness = 3
+	ythickness = 3
+
+	GtkRange::trough_border = 0
+	GtkScrollbar::slider_width = 32
+	GtkScrollbar::stepper_size = 32
+	GtkScale::slider_length = 24
+	GtkScale::slider_width = 24
+
+	GtkProgressBar::xspacing = 0
+	GtkProgressBar::yspacing = 0
+	
+	GtkWidget::focus_line_width = 2
+	GtkWidget::focus_padding = 0
+	
+	GtkButton::default_border = {0, 0, 0, 0}
+
+	GtkToolbar::internal_padding = 2
+
+	GtkCheckButton::indicator_size = 18
+	GtkCheckMenuItem::indicator_size = 18
+
+
+	fg [NORMAL] = @fg_color
+	fg [PRELIGHT] = @fg_color
+	fg [ACTIVE] = @fg_color
+	fg [INSENSITIVE] = lighter (@fg_color)
+	fg [SELECTED] = @selected_fg_color
+
+	bg [NORMAL] = @bg_color
+	bg [PRELIGHT] = @bg_color
+	bg [ACTIVE] = @selected_bg_color
+	bg [INSENSITIVE] = darker (@bg_color)
+	bg [SELECTED] = @selected_bg_color
+
+	text [NORMAL] = @text_color
+	text [PRELIGHT] = @text_color
+	text [SELECTED] = @text_color
+	text [ACTIVE] = @selected_fg_color
+	text [INSENSITIVE] = lighter (@text_color)
+
+	base [NORMAL] = @base_color
+	base [PRELIGHT] = @base_color
+	base [SELECTED] = @selected_bg_color
+	base [ACTIVE] = @selected_bg_color
+	base [INSENSITIVE] = @bg_color
+
+	engine "sato-engine" {}
+}
+
+class "GtkWidget" style "default"
+
+
+style "menubar"
+{
+	bg [NORMAL] = darker (@bg_color)
+}
+class "GtkMenuBar" style "menubar"
+
+style "button"
+{
+	bg[NORMAL] = lighter (@bg_color)
+	bg[PRELIGHT] = lighter (@bg_color)
+	bg[INSENSITIVE] = @bg_color
+	fg[INSENSITIVE] = darker (@bg_color)
+}
+widget_class "*Button*" style "button"
+class "GtkScale" style "button"
+
+style "checkbutton"
+{
+	fg [NORMAL] = @fg_color
+	fg [PRELIGHT] = @fg_color
+	fg [ACTIVE] = @fg_color
+
+	bg [NORMAL] = @bg_color
+	bg [PRELIGHT] = @bg_color
+}
+widget_class "*CheckButton*" style "checkbutton"
+widget_class "*RadioButton*" style "checkbutton"
+widget_class "*ToolButton*" style "checkbutton"
+
+style "menuitem"
+{
+	fg[PRELIGHT] = @selected_fg_color
+	bg[PRELIGHT] = @selected_bg_color
+}
+widget_class "*MenuItem*" style "menuitem"
+
+style "menu"
+{
+	bg[NORMAL] = lighter (@bg_color)
+}
+class "GtkMenu" style "menu"
+
+style "progressbar"
+{
+	xthickness = 0
+	ythickness = 0
+	bg[NORMAL] = darker (@bg_color)
+	bg[PRELIGHT] = @selected_bg_color
+}
+class "GtkProgressBar" style "progressbar"
+
+style "scrollbar"
+{
+  bg[NORMAL] = @selected_bg_color
+  bg[PRELIGHT] = @selected_bg_color
+
+  bg[ACTIVE] = darker (@bg_color)
+
+  bg[SELECTED] = @fg_color
+}
+class "GtkScrollbar" style "scrollbar"
+class "GtkScale" style "scrollbar"
+
+style "treeview_headers"
+{
+  bg[NORMAL] = @bg_color
+  fg[NORMAL] = @fg_color
+}
+widget_class "*.GtkTreeView.GtkButton*" style "treeview_headers"
+
+style "notebook"
+{
+# NORMAL = active tab, ACTIVE = inactive tabs
+  bg[NORMAL] = @selected_bg_color
+  bg[ACTIVE] = lighter (@bg_color)
+}
+class "GtkNotebook" style "notebook"
+
+#
+# Panel
+#
+
+style "matchbox-panel" 
+{
+  bg_pixmap[NORMAL] = "titlebar-panel-background.png"
+}
+widget "MatchboxPanel" style "matchbox-panel"
+
+style "matchbox-panel-horizontal"
+{
+  xthickness = 8
+  ythickness = 0
+}
+widget "MatchboxPanelFrameHorizontal" style "matchbox-panel-horizontal"
+
+style "matchbox-panel-vertical"
+{
+  xthickness = 0
+  ythickness = 8
+}
+widget "MatchboxPanelFrameVertical" style "matchbox-panel-vertical"
+
+#
+# Panel applets.  This is for applets that don't handle painting correctly.
+#
+style "matchbox-panel-applet-background"
+{
+  bg_pixmap[NORMAL] = "titlebar-panel-applet-background.png"
+}
+widget "MatchboxPanelSystemTray" style "matchbox-panel-applet-background"
+
+
+#
+# Desktop
+#
+
+style "matchbox-desktop"
+{
+  # The desktop needs custom colour settings for the focused tiles.  When we
+  # require GTK+ 2.10, use blend here.
+  bg[PRELIGHT] = "#ADCF8B"
+  fg[PRELIGHT] = "#000000"
+
+  fg[ACTIVE] = "#000000"
+}
+widget "TakuWindow.*" style "matchbox-desktop"
+
+style "matchbox-desktop-navigation"
+{
+  fg[NORMAL]="#555753"
+  text[NORMAL]="#555753"
+}
+# TODO: use named widgets
+widget "TakuWindow.*.GtkArrow" style "matchbox-desktop-navigation"
+widget "TakuWindow.*.GtkLabel" style "matchbox-desktop-navigation"

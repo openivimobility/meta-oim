@@ -12,8 +12,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
-PR="56"
-
+PR="57"
 
 S = "${WORKDIR}/git"
 
@@ -22,6 +21,9 @@ FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
                /usr/share/jaspar/browser.sh \
                /usr/share/jaspar/monitor.py \
                /usr/share/jaspar/assets/* \
+               /usr/share/themes/Sato/gtk-2.0/*.png \
+               /usr/share/themes/Sato/gtk-2.0/*.xbm \
+               /usr/share/themes/Sato/gtk-2.0/*.svg \
                /usr/local/bin/*.sh \
                /usr/share/jaspar/epiphany-profile/ \
                /usr/share/applications/browser.desktop \
@@ -71,6 +73,8 @@ do_install () {
 
   install -d ${D}${datadir}/jaspar/assets
   cp ${S}/assets/* ${D}${datadir}/jaspar/assets
+  install -d ${D}${datadir}/themes/Sato/gtk-2.0
+  cp ${S}/assets/* ${D}${datadir}/themes/Sato/gtk-2.0
 
   install -d ${D}${prefix}/local/
   install -d ${D}${prefix}/local/bin/
