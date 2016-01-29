@@ -13,4 +13,5 @@ IMAGE_INSTALL += " \
 	connman connman-tools connman-client \
 	bluez5-testtools \
 	epiphany jaspar wds \
+	gmrender-resurrect \
 	"

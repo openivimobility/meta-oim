@@ -1,0 +1,9 @@
+[Unit]
+Description=Headless UPnP Renderer
+After=connman.service
+
+[Service]
+ExecStart=/usr/lib/gmediarender/gmrender-resurrect.sh
+
+[Install]
+WantedBy=multi-user.target
