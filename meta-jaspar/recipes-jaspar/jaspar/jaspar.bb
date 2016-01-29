@@ -12,7 +12,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
-PR="54"
+PR="55"
 
 
 S = "${WORKDIR}/git"
