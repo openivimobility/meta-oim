@@ -8,6 +8,7 @@ BusName=org.jaspar
 ExecStart=/usr/share/jaspar/ivi-connection-manager/ivi_connection_manager.py
 Environment="HOME=/home/root"
 Environment="DISPLAY=:0.0"
+TimeoutStopSec=10s
 
 [Install]
 WantedBy=multi-user.target
