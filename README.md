@@ -48,6 +48,8 @@ and then:
 
 This will build a genericx86-64 image, which you can `dd` to a usb and run. 
 
+    sudo dd if=tmp/deploy/images/genericx86-64/jaspar-image-genericx86-64.hddimg of=/dev/sdg bs=16M && sync
+
 To run it in qemu:
 
     sudo qemu-system-x86_64 -hda tmp/deploy/images/genericx86-64/jaspar-image-genericx86-64.iso \
