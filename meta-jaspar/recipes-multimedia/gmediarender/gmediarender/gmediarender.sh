@@ -3,6 +3,9 @@
 # Script to launch gmediarender
 #
 
+connmanctl enable wifi
+connmanctl enable p2p
+
 UUID=`ip link show | awk '/ether/ {print "salt:)-" $2}' | head -n 1 | md5sum | awk '{print $1}'` \
 
 exec /usr/bin/gmediarender -f "Jaspar" -u $UUID \

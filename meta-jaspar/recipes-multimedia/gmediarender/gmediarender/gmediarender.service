@@ -3,7 +3,9 @@ Description=Headless UPnP Renderer
 After=connman.service
 
 [Service]
-ExecStart=/usr/lib/gmediarender/gmrender-resurrect.sh
+ExecStart=/usr/lib/gmediarender/gmediarender.sh
+Restart=on-failure
+RestartSec=2s
 
 [Install]
 WantedBy=multi-user.target
