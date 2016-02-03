@@ -12,7 +12,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
-PR="55"
+PR="56"
 
 
 S = "${WORKDIR}/git"
@@ -28,7 +28,6 @@ FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
                /usr/share/applications/navigation.desktop \
                /usr/share/applications/radio.desktop \
                /usr/share/applications/streaming.desktop \
-               /usr/share/applications/pair_bluetooth.desktop \
                /usr/share/matchbox/vfolders/jaspar.directory \
                ${sysconfdir}/dbus-1/system.d/org.jaspar.conf \
                ${base_libdir}/systemd/system/jaspar.service \
