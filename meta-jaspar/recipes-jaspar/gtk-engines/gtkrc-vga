@@ -8,12 +8,13 @@
 gtk_button_images = 0
 gtk_menu_images = 0
 
-gtk_color_scheme = "bg_color:#eeeeec;fg_color:#555753;text_color:#555753;base_color:#fff;selected_bg_color:#d04437;selected_fg_color:#555753"
+gtk_color_scheme = "bg_color:#eeeeec;fg_color:#ffffff;text_color:#ffffff;base_color:#ffffff;selected_bg_color:#000000;selected_fg_color:#ffffff"
 
 style "default"
 {
 
-  bg_pixmap[NORMAL] = "Background_1366x768.png"
+    bg_pixmap[NORMAL] = "Background_1366x768.png"
+
 	xthickness = 3
 	ythickness = 3
 
@@ -187,17 +188,17 @@ style "matchbox-desktop"
 {
   # The desktop needs custom colour settings for the focused tiles.  When we
   # require GTK+ 2.10, use blend here.
-  bg[PRELIGHT] = "#ADCF8B"
-  fg[PRELIGHT] = "#000000"
+  bg[PRELIGHT] = @bg_color
+  fg[PRELIGHT] = @fg_color
 
-  fg[ACTIVE] = "#000000"
+  fg[ACTIVE] = @fg_color
 }
 widget "TakuWindow.*" style "matchbox-desktop"
 
 style "matchbox-desktop-navigation"
 {
-  fg[NORMAL]="#555753"
-  text[NORMAL]="#555753"
+  fg[NORMAL]=@fg_color
+  text[NORMAL]=@text_color
 }
 # TODO: use named widgets
 widget "TakuWindow.*.GtkArrow" style "matchbox-desktop-navigation"
