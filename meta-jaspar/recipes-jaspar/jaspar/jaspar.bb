@@ -12,7 +12,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
-PR="57"
+PR="58"
 
 S = "${WORKDIR}/git"
 
@@ -54,6 +54,7 @@ RDEPENDS_${PN} += " \
   python-pygobject \
   python-importlib \
   python-subprocess \
+  python-pygtk \
 "
 
 inherit systemd
