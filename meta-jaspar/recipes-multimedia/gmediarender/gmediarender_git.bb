@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/cajun-rat/gmrender-resurrect.git \
 
 SRCREV = "99be5e0b39ed5be4367f8187a97b6fc57ce3ed74"
 PV= "0.0.0+gitr${SRCPV}"
-PR= "r2"
+PR= "r3"
 S = "${WORKDIR}/git"
 
 DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-bad \
