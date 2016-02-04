@@ -1,6 +1,6 @@
 DESCRIPTION = "OpenIVI Mobility HTML5 environment"
 SECTION = "base"
-LICENSE = "GPLv2+"
+LICENSE = "PROPRIETRY"
 LIC_FILES_CHKSUM = \
 "file://${S}/README.md;beginline=4;endline=7;md5=4f35c0a2a2fc517a1a824baf204781e3"
 
