@@ -2,8 +2,8 @@ SUMMARY = "Custom Matchbox session files for the Sato environment"
 HOMEPAGE = "http://www.matchbox-project.org/"
 BUGTRACKER = "http://bugzilla.yoctoproject.org/"
 
-LICENSE = "GPLv2.0+"
-LIC_FILES_CHKSUM = "file://session;endline=3;md5=f8a5c5b9c279e52dc094d10e11c2be63"
+LICENSE = "PROPRIETRY"
+LIC_FILES_CHKSUM = "file://session;endline=1;md5=3e2b31c72181b87149ff995e7202c0e3"
 
 SECTION = "x11"
 DEPENDS = "gconf-native"
