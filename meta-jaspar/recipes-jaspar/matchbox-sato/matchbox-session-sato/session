@@ -1,7 +1,5 @@
 #!/bin/sh
 
-. /etc/formfactor/config
-
 if [ "$HAVE_TOUCHSCREEN" = "1" ]; then
     SHOWCURSOR="no"
 else
@@ -14,24 +12,14 @@ else
     KEYBOARD_APPLET="keyboard"
 fi
 
-# Tell GTK+3 we really want server side decorations, even with
-# GtkHeaderBar using applications: Without that mb-panel will render
-# on top of the client side decorations.
-export GTK_CSD=0
-
-
 xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
 xrandr --addmode HDMI1 1024x768p
 xrandr --output HDMI1 --mode 1024x768p
 
-START_APPLETS=showdesktop,windowselector
-END_APPLETS=clock,battery,$KEYBOARD_APPLET,systray,startup-notify,notify
-END_APPLETS=openmoko-panel-gsm,$END_APPLETS # feature-phone
-
 while true; do
 echo `/usr/share/jaspar/monitor.py`
   sleep 1;
-done | dzen2 -h 108 -fg white -bg black -fn fixed -dock &
+done | dzen2 -h 108 -fg white -bg black -fn Sans -dock &
 
 matchbox-window-manager -use_titlebar no -theme Sato -use_cursor $SHOWCURSOR &
 exec matchbox-desktop
