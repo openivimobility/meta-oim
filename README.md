@@ -54,3 +54,8 @@ To run it in qemu:
 
     sudo qemu-system-x86_64 -hda tmp/deploy/images/genericx86-64/jaspar-image-genericx86-64.iso \
         -m 1G -usb -usbdevice host:0cf3:9271 -usbdevice host:054c:06c1 -cpu Haswell -enable-kvm
+
+To find out which commit of the jaspar project is used, issue the
+following command:
+
+    cat tmp/deploy/images/genericx86-64/jaspar-image-genericx86-64.manifest | grep jaspar
