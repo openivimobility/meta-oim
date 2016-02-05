@@ -21,5 +21,5 @@ echo `/usr/share/jaspar/monitor.py`
   sleep 1;
 done | dzen2 -h 108 -fg white -bg black -fn Sans -dock &
 
-matchbox-window-manager -use_titlebar no -theme Sato -use_cursor $SHOWCURSOR &
-exec matchbox-desktop
+# matchbox-desktop is started by jaspar.service
+exec matchbox-window-manager -use_titlebar no -theme Sato -use_cursor $SHOWCURSOR
