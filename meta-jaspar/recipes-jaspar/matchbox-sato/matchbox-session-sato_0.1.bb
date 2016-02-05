@@ -2,7 +2,7 @@ SUMMARY = "Custom Matchbox session files for the Sato environment"
 HOMEPAGE = "http://www.matchbox-project.org/"
 BUGTRACKER = "http://bugzilla.yoctoproject.org/"
 
-LICENSE = "PROPRIETRY"
+LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://session;endline=1;md5=3e2b31c72181b87149ff995e7202c0e3"
 
 SECTION = "x11"
