@@ -25,6 +25,7 @@ FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
                /usr/share/themes/Sato/gtk-2.0/*.xbm \
                /usr/share/themes/Sato/gtk-2.0/*.svg \
                /usr/local/bin/*.sh \
+               /usr/local/bin/car_dealer_dialog.py \
                /usr/share/jaspar/epiphany-profile/ \
                /usr/share/applications/browser.desktop \
                /usr/share/applications/navigation.desktop \
@@ -80,6 +81,7 @@ do_install () {
   install -d ${D}${prefix}/local/
   install -d ${D}${prefix}/local/bin/
   cp ${S}/*.sh ${D}${prefix}/local/bin/
+  cp ${S}/ivi-connection-manager/car_dealer_dialog.py ${D}${prefix}/local/bin/
 
   install -D ${WORKDIR}/org.jaspar.conf ${D}${sysconfdir}/dbus-1/system.d/org.jaspar.conf
 

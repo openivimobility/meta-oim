@@ -8,7 +8,7 @@
 gtk_button_images = 0
 gtk_menu_images = 0
 
-gtk_color_scheme = "bg_color:#eeeeec;fg_color:#ffffff;text_color:#ffffff;base_color:#ffffff;selected_bg_color:#000000;selected_fg_color:#ffffff"
+gtk_color_scheme = "bg_color:#000000;fg_color:#ffffff;text_color:#ffffff;base_color:#ffffff;selected_bg_color:#000000;selected_fg_color:#ffffff"
 
 style "default"
 {
