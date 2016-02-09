@@ -6,6 +6,8 @@ LICENSE = "MIT"
 
 inherit core-image
 
+IMAGE_ROOTFS_EXTRA_SPACE = "100000"
+
 IMAGE_INSTALL += " \
 	packagegroup-core-x11-sato-base \
   openssh \
