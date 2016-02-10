@@ -12,7 +12,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
-PR="58"
+PR="59"
 
 S = "${WORKDIR}/git"
 
@@ -21,6 +21,7 @@ FILES_${PN} = "/usr/share/jaspar/ivi-connection-manager/phone_configuration.py \
                /usr/share/jaspar/browser.sh \
                /usr/share/jaspar/monitor.py \
                /usr/share/jaspar/assets/* \
+               /usr/share/jaspar/version \
                /usr/share/themes/Sato/gtk-2.0/*.png \
                /usr/share/themes/Sato/gtk-2.0/*.xbm \
                /usr/share/themes/Sato/gtk-2.0/*.svg \
@@ -87,4 +88,6 @@ do_install () {
 
   install -d ${D}${systemd_unitdir}/system
   install -c ${WORKDIR}/jaspar.service ${D}${systemd_unitdir}/system
+
+  echo ${SRCPV} | awk -F+ '{ print $2 }' > ${D}${datadir}/jaspar/version
 }
