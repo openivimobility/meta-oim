@@ -1,0 +1,13 @@
+diff --git a/src/connman.service.in b/src/connman.service.in
+index 8f7f342..243ebd5 100644
+--- a/src/connman.service.in
++++ b/src/connman.service.in
+@@ -8,7 +8,7 @@ Wants=network.target remote-fs-pre.target
+ Type=dbus
+ BusName=net.connman
+ Restart=on-failure
+-ExecStart=@sbindir@/connmand -n
++ExecStart=@sbindir@/connmand -n -d
+ StandardOutput=null
+ 
+ [Install]

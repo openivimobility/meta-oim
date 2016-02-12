@@ -1,0 +1,13 @@
+diff --git a/wpa_supplicant/systemd/wpa_supplicant.service.in b/wpa_supplicant/systemd/wpa_supplicant.service.in
+index ea964ce..9daabed 100644
+--- a/wpa_supplicant/systemd/wpa_supplicant.service.in
++++ b/wpa_supplicant/systemd/wpa_supplicant.service.in
+@@ -6,7 +6,7 @@ Wants=network.target
+ [Service]
+ Type=dbus
+ BusName=fi.epitest.hostap.WPASupplicant
+-ExecStart=@BINDIR@/wpa_supplicant -u
++ExecStart=@BINDIR@/wpa_supplicant -u -ddt
+ 
+ [Install]
+ WantedBy=multi-user.target
