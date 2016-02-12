@@ -16,6 +16,11 @@ xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsy
 xrandr --addmode HDMI1 1024x768p
 xrandr --output HDMI1 --mode 1024x768p
 
+xmodmap -e "keycode 121 = KP_Subtract"
+xmodmap -e "keycode 134 = KP_Add"
+xmodmap -e "keycode 122 = Down"
+xmodmap -e "keycode 123 = Up"
+
 while true; do
 echo `/usr/share/jaspar/monitor.py`
   sleep 1;
