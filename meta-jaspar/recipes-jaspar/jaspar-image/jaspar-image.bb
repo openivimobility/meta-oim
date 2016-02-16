@@ -11,6 +11,7 @@ IMAGE_ROOTFS_EXTRA_SPACE = "100000"
 IMAGE_INSTALL += " \
 	packagegroup-core-x11-sato-base \
   openssh \
+  alsa-utils \
 	matchbox-terminal \
 	kernel-modules linux-firmware \
 	connman connman-tools connman-client \
