@@ -1,3 +1,35 @@
+###############################################
+# _____  _   _   ___   _   _ _____  _____     #
+#/  __ \| | | | / _ \ | \ | |  __ \|  ___|    #
+#| /  \/| |_| |/ /_\ \|  \| | |  \/| |__      #
+#| |    |  _  ||  _  || . ` | | __ |  __|     #
+#| \__/\| | | || | | || |\  | |_\ \| |___     #
+# \____/\_| |_/\_| |_/\_| \_/\____/\____/     #
+#                                             #
+#                                             #
+#   ___  ___   ___________  ___  ______       #
+#  |_  |/ _ \ /  ___| ___ \/ _ \ | ___ \      #
+#    | / /_\ \\ `--.| |_/ / /_\ \| |_/ /      #
+#    | |  _  | `--. \  __/|  _  ||    /       #
+#/\__/ / | | |/\__/ / |   | | | || |\ \       #
+#\____/\_| |_/\____/\_|   \_| |_/\_| \_|      #
+#                                             #
+#                                             #
+#______ ___________ _____                     #
+#| ___ \  ___| ___ \  _  |                    #
+#| |_/ / |__ | |_/ / | | |                    #
+#|    /|  __||  __/| | | |                    #
+#| |\ \| |___| |   \ \_/ /                    #
+#\_| \_\____/\_|    \___/                     #
+#                                             #
+#                                             #
+# if you change this file, edit               #
+# defconfig in advancedtelematic/jaspar       #
+# to match.                                   #
+# git@github.com:advancedtelematic/jaspar.git #
+#                                             #
+###############################################
+
 # Example wpa_supplicant build time configuration
 #
 # This file lists the configuration options that are used when building the
@@ -19,63 +51,6 @@
 # the kerberos files are not in the default include path. Following line can be
 # used to fix build issues on such systems (krb5.h not found).
 #CFLAGS += -I/usr/include/kerberos
-
-# Example configuration for various cross-compilation platforms
-
-#### sveasoft (e.g., for Linksys WRT54G) ######################################
-#CC=mipsel-uclibc-gcc
-#CC=/opt/brcm/hndtools-mipsel-uclibc/bin/mipsel-uclibc-gcc
-#CFLAGS += -Os
-#CPPFLAGS += -I../src/include -I../../src/router/openssl/include
-#LIBS += -L/opt/brcm/hndtools-mipsel-uclibc-0.9.19/lib -lssl
-###############################################################################
-
-#### openwrt (e.g., for Linksys WRT54G) #######################################
-#CC=mipsel-uclibc-gcc
-#CC=/opt/brcm/hndtools-mipsel-uclibc/bin/mipsel-uclibc-gcc
-#CFLAGS += -Os
-#CPPFLAGS=-I../src/include -I../openssl-0.9.7d/include \
-#	-I../WRT54GS/release/src/include
-#LIBS = -lssl
-###############################################################################
-
-
-# Driver interface for Host AP driver
-CONFIG_DRIVER_HOSTAP=y
-
-# Driver interface for Agere driver
-#CONFIG_DRIVER_HERMES=y
-# Change include directories to match with the local setup
-#CFLAGS += -I../../hcf -I../../include -I../../include/hcf
-#CFLAGS += -I../../include/wireless
-
-# Driver interface for madwifi driver
-# Deprecated; use CONFIG_DRIVER_WEXT=y instead.
-#CONFIG_DRIVER_MADWIFI=y
-# Set include directory to the madwifi source tree
-#CFLAGS += -I../../madwifi
-
-# Driver interface for ndiswrapper
-# Deprecated; use CONFIG_DRIVER_WEXT=y instead.
-#CONFIG_DRIVER_NDISWRAPPER=y
-
-# Driver interface for Atmel driver
-# CONFIG_DRIVER_ATMEL=y
-
-# Driver interface for old Broadcom driver
-# Please note that the newer Broadcom driver ("hybrid Linux driver") supports
-# Linux wireless extensions and does not need (or even work) with the old
-# driver wrapper. Use CONFIG_DRIVER_WEXT=y with that driver.
-#CONFIG_DRIVER_BROADCOM=y
-# Example path for wlioctl.h; change to match your configuration
-#CFLAGS += -I/opt/WRT54GS/release/src/include
-
-# Driver interface for Intel ipw2100/2200 driver
-# Deprecated; use CONFIG_DRIVER_WEXT=y instead.
-#CONFIG_DRIVER_IPW=y
-
-# Driver interface for Ralink driver
-#CONFIG_DRIVER_RALINK=y
 
 # Driver interface for generic Linux wireless extensions
 # Note: WEXT is deprecated in the current Linux kernel version and no new
@@ -124,9 +99,6 @@ CONFIG_DRIVER_NL80211=y
 # wpa_supplicant.
 # CONFIG_USE_NDISUIO=y
 
-# Driver interface for development testing
-#CONFIG_DRIVER_TEST=y
-
 # Driver interface for wired Ethernet drivers
 CONFIG_DRIVER_WIRED=y
 
@@ -135,6 +107,10 @@ CONFIG_DRIVER_WIRED=y
 
 # Driver interface for no driver (e.g., WPS ER only)
 #CONFIG_DRIVER_NONE=y
+
+# Solaris libraries
+#LIBS += -lsocket -ldlpi -lnsl
+#LIBS_c += -lsocket
 
 # Enable IEEE 802.1X Supplicant (automatically included if any EAP method is
 # included)
@@ -204,9 +180,7 @@ CONFIG_EAP_LEAP=y
 #CONFIG_EAP_TNC=y
 
 # Wi-Fi Protected Setup (WPS)
-CONFIG_WPS=y
-# Enable WSC 2.0 support
-#CONFIG_WPS2=y
+#CONFIG_WPS=y
 # Enable WPS external registrar functionality
 #CONFIG_WPS_ER=y
 # Disable credentials for an open network by default when acting as a WPS
@@ -245,8 +219,10 @@ CONFIG_SMARTCARD=y
 # Select control interface backend for external programs, e.g, wpa_cli:
 # unix = UNIX domain sockets (default for Linux/*BSD)
 # udp = UDP sockets using localhost (127.0.0.1)
+# udp6 = UDP IPv6 sockets using localhost (::1)
 # named_pipe = Windows Named Pipe (default for Windows)
 # udp-remote = UDP sockets with remote access (only for tests systems/purpose)
+# udp6-remote = UDP IPv6 sockets with remote access (only for tests purpose)
 # y = use default (backwards compatibility)
 # If this option is commented out, control interface is not included in the
 # build.
@@ -306,7 +282,7 @@ CONFIG_BACKEND=file
 # main_none = Very basic example (development use only)
 #CONFIG_MAIN=main
 
-# Select wrapper for operatins system and C library specific functions
+# Select wrapper for operating system and C library specific functions
 # unix = UNIX/POSIX like systems (default)
 # win32 = Windows systems
 # none = Empty template
@@ -319,6 +295,9 @@ CONFIG_BACKEND=file
 
 # Should we use poll instead of select? Select is used by default.
 #CONFIG_ELOOP_POLL=y
+
+# Should we use epoll instead of select? Select is used by default.
+#CONFIG_ELOOP_EPOLL=y
 
 # Select layer 2 packet implementation
 # linux = Linux packet socket (default)
@@ -381,14 +360,14 @@ CONFIG_PEERKEY=y
 
 # Add support for old DBus control interface
 # (fi.epitest.hostap.WPASupplicant)
-#CONFIG_CTRL_IFACE_DBUS=y
+CONFIG_CTRL_IFACE_DBUS=y
 
 # Add support for new DBus control interface
 # (fi.w1.hostap.wpa_supplicant1)
 CONFIG_CTRL_IFACE_DBUS_NEW=y
 
 # Add introspection support for new DBus control interface
-#CONFIG_CTRL_IFACE_DBUS_INTRO=y
+CONFIG_CTRL_IFACE_DBUS_INTRO=y
 
 # Add support for loading EAP methods dynamically as shared libraries.
 # When this option is enabled, each EAP method can be either included
@@ -409,7 +388,7 @@ CONFIG_CTRL_IFACE_DBUS_NEW=y
 # Please also note that using dynamic libraries will increase the total binary
 # size. Thus, it may not be the best option for targets that have limited
 # amount of memory/flash.
-#CONFIG_DYNAMIC_EAP_METHODS=y
+CONFIG_DYNAMIC_EAP_METHODS=y
 
 # IEEE Std 802.11r-2008 (Fast BSS Transition)
 #CONFIG_IEEE80211R=y
@@ -418,15 +397,19 @@ CONFIG_CTRL_IFACE_DBUS_NEW=y
 #CONFIG_DEBUG_FILE=y
 
 # Send debug messages to syslog instead of stdout
-#CONFIG_DEBUG_SYSLOG=y
+CONFIG_DEBUG_SYSLOG=y
 # Set syslog facility for debug messages
-#CONFIG_DEBUG_SYSLOG_FACILITY=LOG_DAEMON
+CONFIG_DEBUG_SYSLOG_FACILITY=LOG_DAEMON
 
 # Add support for sending all debug messages (regardless of debug verbosity)
 # to the Linux kernel tracing facility. This helps debug the entire stack by
 # making it easy to record everything happening from the driver up into the
 # same file, e.g., using trace-cmd.
 #CONFIG_DEBUG_LINUX_TRACING=y
+
+# Add support for writing debug log to Android logcat instead of standard
+# output
+#CONFIG_ANDROID_LOG=y
 
 # Enable privilege separation (see README 'Privilege separation' for details)
 #CONFIG_PRIVSEP=y
@@ -452,10 +435,6 @@ CONFIG_CTRL_IFACE_DBUS_NEW=y
 #LIBS += -lbfd -liberty -lz
 #LIBS_p += -lbfd -liberty -lz
 #LIBS_c += -lbfd -liberty -lz
-
-CONFIG_TLS = %ssl%
-CONFIG_CTRL_IFACE_DBUS=y
-CONFIG_CTRL_IFACE_DBUS_NEW=y
 
 # wpa_supplicant depends on strong random number generation being available
 # from the operating system. os_get_random() function is used to fetch random
@@ -516,9 +495,7 @@ CONFIG_CTRL_IFACE_DBUS_NEW=y
 # should be noted that this is mainly aimed at simple cases like
 # WPA2-Personal while more complex configurations like WPA2-Enterprise with an
 # external RADIUS server can be supported with hostapd.
-CONFIG_AP=y
-
-CONFIG_BGSCAN_SIMPLE=y
+#CONFIG_AP=y
 
 # P2P (Wi-Fi Direct)
 # This can be used to enable P2P support in wpa_supplicant. See README-P2P for
@@ -539,7 +516,7 @@ CONFIG_WIFI_DISPLAY=y
 #
 # Enabling directly a module will enable autoscan support.
 # For exponential module:
-CONFIG_AUTOSCAN_EXPONENTIAL=y
+#CONFIG_AUTOSCAN_EXPONENTIAL=y
 # For periodic module:
 #CONFIG_AUTOSCAN_PERIODIC=y
 
@@ -550,3 +527,12 @@ CONFIG_AUTOSCAN_EXPONENTIAL=y
 #
 # External password backend for testing purposes (developer use)
 #CONFIG_EXT_PASSWORD_TEST=y
+
+# Enable Fast Session Transfer (FST)
+#CONFIG_FST=y
+
+# Enable CLI commands for FST testing
+#CONFIG_FST_TEST=y
+
+# OS X builds. This is only for building eapol_test.
+#CONFIG_OSX=y
