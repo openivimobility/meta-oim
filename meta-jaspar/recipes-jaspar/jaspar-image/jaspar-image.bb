@@ -19,4 +19,5 @@ IMAGE_INSTALL += " \
 	epiphany jaspar wds \
 	gmediarender gupnp-tools \
 	matchbox-wm matchbox-panel-2 \
+	tcpdump \
 	"

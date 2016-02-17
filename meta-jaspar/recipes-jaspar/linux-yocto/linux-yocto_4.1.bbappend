@@ -6,6 +6,7 @@ SRC_URI += "\
 	file://bt.cfg \
 	file://tether.cfg \
 	file://touchscreen.cfg \
+	file://usbmon.cfg \
 	"
 LINUX_VERSION_EXTENSION = "-ats"
 
