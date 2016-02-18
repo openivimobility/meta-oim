@@ -14,6 +14,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-openembedded/meta-gnome \
   ##OEROOT##/meta-openembedded/meta-multimedia \
   ##OEROOT##/meta-openembedded/meta-python \
+  ##OEROOT##/meta-openembedded/meta-networking \
   ##OEROOT##/meta-oim/meta-jaspar \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
