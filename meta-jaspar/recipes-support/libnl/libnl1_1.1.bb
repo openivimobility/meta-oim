@@ -21,10 +21,13 @@ SRC_URI = "\
   file://respect-ldflags.patch \
   file://netlink-local-fix.patch \
   file://dont-link-libnl-from-sysroot.patch \
-  file://build.only.static.lib.patch \
   file://fix-ucred-declaration.patch \
+  file://fix_port_tracking.patch \
+  file://remove_inline_specifier.patch \
+  file://fix_netlink-kernel_new_define.patch \
 "
 S = "${WORKDIR}/libnl-${PV}"
+B = "${S}"
 
 SRC_URI[md5sum] = "ae970ccd9144e132b68664f98e7ceeb1"
 SRC_URI[sha256sum] = "35cea4cfb6cd8af0cafa0f34fff81def5a1f193b8b8384299b4b21883e22edc3"

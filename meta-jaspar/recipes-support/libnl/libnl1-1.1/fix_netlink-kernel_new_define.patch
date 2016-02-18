@@ -1,0 +1,25 @@
+Description: Update netlink-kernel.h to deal with the define rename
+
+--- libnl-1.1.orig/include/netlink/netlink-kernel.h
++++ libnl-1.1/include/netlink/netlink-kernel.h
+@@ -1,5 +1,12 @@
+-#ifndef __LINUX_NETLINK_H
+-#define __LINUX_NETLINK_H
++/**
++ * Recent linux-libc-dev changed the name of the define
++ */
++#ifdef __LINUX_NETLINK_H
++#define _UAPI__LINUX_NETLINK_H
++#endif
++
++#ifndef _UAPI__LINUX_NETLINK_H
++#define _UAPI__LINUX_NETLINK_H
+ 
+ /**
+  * Netlink socket address
+@@ -193,4 +200,4 @@ struct nl_pktinfo
+ 	__u32	group;
+ };
+ 
+-#endif	/* __LINUX_NETLINK_H */
++#endif	/* _UAPI__LINUX_NETLINK_H */
