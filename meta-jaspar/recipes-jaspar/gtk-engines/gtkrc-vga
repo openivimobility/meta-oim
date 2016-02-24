@@ -186,6 +186,10 @@ widget "MatchboxPanelSystemTray" style "matchbox-panel-applet-background"
 
 style "matchbox-desktop"
 {
+
+  font_name = "Sans 24"
+  TakuIconTile::orientation = vertical
+
   # The desktop needs custom colour settings for the focused tiles.  When we
   # require GTK+ 2.10, use blend here.
   bg[PRELIGHT] = @bg_color
