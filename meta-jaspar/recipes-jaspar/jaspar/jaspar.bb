@@ -2,7 +2,7 @@ DESCRIPTION = "OpenIVI Mobility HTML5 environment"
 SECTION = "base"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = \
-"file://${S}/README.md;beginline=4;endline=7;md5=4f35c0a2a2fc517a1a824baf204781e3"
+"file://${S}/README.md;beginline=4;endline=7;md5=8d2127b230519ce4ad2c16070bdeb7b3"
 
 SRC_URI = "git://git@github.com/advancedtelematic/jaspar.git;protocol=ssh \
            file://org.jaspar.conf \
