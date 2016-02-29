@@ -21,6 +21,10 @@ xmodmap -e "keycode 134 = KP_Add"
 xmodmap -e "keycode 122 = Down"
 xmodmap -e "keycode 123 = Up"
 
+# Vitaly: "Nexus4 starts working better with WDS suite if you disable
+# TCP timestamps".
+sudo echo 0 > /proc/sys/net/ipv4/tcp_timestamps
+
 while true; do
 echo `/usr/share/jaspar/monitor.py`
   sleep 1;
