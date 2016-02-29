@@ -25,6 +25,9 @@ xmodmap -e "keycode 123 = Up"
 # TCP timestamps".
 sudo echo 0 > /proc/sys/net/ipv4/tcp_timestamps
 
+# This applet ruins wifi direct connections; kill it.
+killall connman-applet
+
 while true; do
 echo `/usr/share/jaspar/monitor.py`
   sleep 1;
