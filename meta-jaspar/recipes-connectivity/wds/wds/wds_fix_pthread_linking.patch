@@ -29,12 +29,13 @@ index f058066..47aeeff 100644
  add_library(wdsrtsp OBJECT
      ${BISON_Parser_OUTPUT_SOURCE}
      ${FLEX_MessageLexer_OUTPUTS}
-@@ -44,6 +48,7 @@ add_library(wdsrtsp OBJECT
+@@ -44,7 +48,7 @@ add_library(wdsrtsp OBJECT
  add_executable(test-wds tests.cpp $<TARGET_OBJECTS:wdsrtsp> $<TARGET_OBJECTS:wdscommon>)
  add_executable(test-evdev test-evdev.cpp $<TARGET_OBJECTS:wdsrtsp> $<TARGET_OBJECTS:wdscommon>)
  set(LINK_FLAGS ${LINK_FLAGS} "-Wl,-whole-archive")
--target_link_libraries (test-wds)
-+target_link_libraries (test-wds Threads::Threads)
-+target_link_libraries (test-evdev Threads::Threads)
+-target_link_libraries (test-wds ${X11_LIBRARIES})
+-target_link_libraries (test-evdev ${X11_LIBRARIES})
++target_link_libraries (test-wds ${X11_LIBRARIES} Threads::Threads)
++target_link_libraries (test-evdev ${X11_LIBRARIES} Threads::Threads)
  
  add_test(WfdTest test-wds)
