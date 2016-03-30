@@ -4,15 +4,14 @@ LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = \
 "file://${S}/README.md;beginline=4;endline=7;md5=8d2127b230519ce4ad2c16070bdeb7b3"
 
+SRCREV = "${PV}"
 SRC_URI = "git://git@github.com/advancedtelematic/jaspar.git;protocol=ssh \
            file://org.jaspar.conf \
            file://jaspar.service \
           "
 FILESEXTRAPATHS_prepend := "${THISDIR}:"
 
-SRCREV = "${AUTOREV}"
-PV = "0.1+git${SRCPV}"
-PR="59"
+PR="0"
 
 S = "${WORKDIR}/git"
 
