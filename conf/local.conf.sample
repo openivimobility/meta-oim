@@ -222,7 +222,8 @@ BB_DISKMON_DIRS = "\
 # libsdl library available on your build system.
 PACKAGECONFIG_append_pn-qemu-native = " sdl"
 PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
-ASSUME_PROVIDED += "libsdl-native"
+# https://bugzilla.yoctoproject.org/show_bug.cgi?id=8553
+# ASSUME_PROVIDED += "libsdl-native"
 
 
 # CONF_VERSION is increased each time build/conf/ changes incompatibly and is used to
