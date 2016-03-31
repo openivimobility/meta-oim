@@ -6,4 +6,12 @@ LICENSE = "MIT"
 
 inherit core-image
 
-IMAGE_INSTALL += "packagegroup-core-x11-sato-games kernel-modules linux-firmware connman connman-tools connman-client openivi-html5"
+IMAGE_INSTALL += " \
+	kernel-modules \
+	linux-firmware \
+	connman \
+	connman-tools \
+	connman-client \
+	html5-headunit \
+	openivi-html5 \
+	"
