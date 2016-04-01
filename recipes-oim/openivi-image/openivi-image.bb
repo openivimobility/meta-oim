@@ -14,4 +14,5 @@ IMAGE_INSTALL += " \
 	connman-client \
 	html5-headunit \
 	openivi-html5 \
+	ota-plus-client \
 	"
