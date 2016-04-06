@@ -6,9 +6,9 @@ LIC_FILES_CHKSUM = \
 EXTERNALSRC = "${THISDIR}/../../../../client/ota-plus-client"
 EXTERNALSRC_BUILD = "${EXTERNALSRC}"
 
-inherit cargo externalsrc
+inherit systemd cargo externalsrc
 
-PR="9"
+PR="10"
 
 BBCLASSEXTEND = "native"
 
