@@ -15,4 +15,5 @@ IMAGE_INSTALL += " \
 	html5-headunit \
 	openivi-html5 \
 	ota-plus-client \
+	xinput \
 	"

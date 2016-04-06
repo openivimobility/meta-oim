@@ -2,14 +2,12 @@ SUMMARY = "Custom Matchbox session files for the Sato environment"
 HOMEPAGE = "http://www.matchbox-project.org/"
 BUGTRACKER = "http://bugzilla.yoctoproject.org/"
 
-LICENSE = "GPLv2.0+"
-LIC_FILES_CHKSUM = "file://session;endline=3;md5=f8a5c5b9c279e52dc094d10e11c2be63"
+LICENSE = "CLOSED"
 
 SECTION = "x11"
 DEPENDS = "gconf-native"
 RDEPENDS_${PN} = "formfactor gtk-sato-engine matchbox-theme-sato gtk-theme-sato matchbox-panel-2 matchbox-desktop-sato matchbox-session gconf"
-PR = "r30"
-PV = "0.4"
+PR = "r33"
 
 # This package is architecture specific because the session script is modified
 # based on the machine architecture.
