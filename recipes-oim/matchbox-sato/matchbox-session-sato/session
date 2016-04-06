@@ -18,7 +18,6 @@ fi
 
 
 
-openivi-html5 -f -u http://localhost:8000 &
 
 case $UNIT in
 	openivi)
@@ -33,6 +32,17 @@ case $UNIT in
 		xrandr --output HDMI1 --mode 1024x768p
 		;;
 esac
+
+# Hack until we have connman 1.31
+# https://01.org/connman/blogs/pflykt/2015/connman-1.31
+# with connmand-wait-online.target
+until connmanctl state | grep -q online
+do
+	echo "Waiting for a network connection..."
+	sleep 1
+done
+
+openivi-html5 -f -u http://localhost:8000 &
 
 
 START_APPLETS=showdesktop,windowselector
