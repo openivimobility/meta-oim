@@ -16,7 +16,8 @@ else
     KEYBOARD_APPLET="keyboard"
 fi
 
-
+# Disable screen blanking
+xset s off -dpms
 
 
 case $UNIT in
