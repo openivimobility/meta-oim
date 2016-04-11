@@ -12,6 +12,7 @@ PR="4"
 
 FILES_${PN} = " \
                 /etc/ota/credentials/* \
+                /var/lib/connman/* \
                 /usr/bin/ota-plus-demo-provision.sh \
                 ${base_libdir}/systemd/system/ota-plus-client.service \
               "
@@ -29,4 +30,7 @@ do_install() {
 
   install -d ${D}${bindir}
   install -m 0755 ${S}/ota-plus-demo-provision.sh ${D}${bindir}
+
+  install -d ${D}${localstatedir}/lib/
+  cp -r ${S}/connman/ ${D}${localstatedir}/lib/
 }
