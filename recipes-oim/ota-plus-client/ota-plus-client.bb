@@ -19,6 +19,7 @@ FILES_${PN} = " \
 
 SYSTEMD_SERVICE_${PN} = "ota-plus-client.service"
 
+DEPENDS += " openssl "
 RDEPENDS_${PN} = " libcrypto libssl "
 
 do_install() {
