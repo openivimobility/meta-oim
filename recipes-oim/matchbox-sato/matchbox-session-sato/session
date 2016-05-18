@@ -10,15 +10,11 @@ else
     SHOWCURSOR="yes"
 fi
 
-if [ "$HAVE_KEYBOARD" = "1" ]; then
-    KEYBOARD_APPLET=""
-else
-    KEYBOARD_APPLET="keyboard"
-fi
-
 # Disable screen blanking
 xset s off -dpms
 
+# Start on-screen keyboard in 'remote-control' mode
+matchbox-keyboard -d &
 
 case $UNIT in
 	openivi)
@@ -45,9 +41,8 @@ done
 
 openivi-html5 -f -u http://localhost:8000 &
 
-
 START_APPLETS=showdesktop,windowselector
-END_APPLETS=clock,battery,$KEYBOARD_APPLET,systray,startup-notify,notify
+END_APPLETS=clock,battery,systray,startup-notify,notify
 END_APPLETS=openmoko-panel-gsm,$END_APPLETS # feature-phone
 
 matchbox-panel --titlebar --start-applets $START_APPLETS --end-applets $END_APPLETS &
