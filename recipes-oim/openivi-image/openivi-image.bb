@@ -6,6 +6,8 @@ LICENSE = "MIT"
 
 inherit core-image
 
+APPEND+="console=ttyS0,115200 quiet"
+
 IMAGE_INSTALL += " \
 	kernel-modules \
 	linux-firmware \
