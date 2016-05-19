@@ -4,9 +4,9 @@
 
     git clone -b dizzy http://git.yoctoproject.org/git/poky
     cd poky
-    git clone -b dizzy git@github.com:meta-qt5/meta-qt5.git
+    git clone -b dizzy https://github.com/meta-qt5/meta-qt5.git
     git clone -b dizzy git://git.yoctoproject.org/meta-intel
-    git clone git@github.com:openivimobility/meta-oim.git
+    git clone https://github.com/openivimobility/meta-oim.git
     export TEMPLATECONF=meta-oim/conf
     source oe-init-build-env
 
