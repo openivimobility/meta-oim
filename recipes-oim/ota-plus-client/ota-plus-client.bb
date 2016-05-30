@@ -14,6 +14,7 @@ BBCLASSEXTEND = "native"
 
 FILES_${PN} = " \
                 /usr/bin/ota_plus_client \
+                /etc/ota.version \
                 ${base_libdir}/systemd/system/ota-plus-client.service \
               "
 
@@ -28,4 +29,7 @@ do_install() {
 
   install -d ${D}${systemd_unitdir}/system
   install -c ${S}/pkg/yocto/ota-plus-client.service ${D}${systemd_unitdir}/system
+
+  install -d ${D}${sysconfdir}
+  echo `git log -1 --pretty=format:%H` > ${D}${sysconfdir}/ota.version
 }
