@@ -12,24 +12,19 @@ DEPENDS = "libfakekey expat libxft gtk+ matchbox-panel-2"
 
 EXTERNALSRC = "${THISDIR}/../../../../client/matchbox-keyboard"
 
-PV = "0.1"
+PV = "0.2"
 PR = "r0"
 
-inherit autotools pkgconfig gettext gtk-immodules-cache distro_features_check externalsrc
+inherit cmake externalsrc
 
 # The libxft, libfakekey and matchbox-panel-2 requires x11 in DISTRO_FEATURES
 REQUIRED_DISTRO_FEATURES = "x11"
 
-EXTRA_OECONF = "--disable-cairo --enable-gtk-im --enable-applet"
-
+# These packages a provided by the recipe in sato that this package overlays
+# Without these, bitbake will try and pull in the sato package too
 PACKAGES += "${PN}-im ${PN}-applet"
 
-FILES_${PN} = "${bindir}/ \
-	       ${sysconfdir} \
-         ${libdir}/libmatchbox-keyboard.so.* \        
-	       ${datadir}/applications \
-	       ${datadir}/pixmaps \
-	       ${datadir}/matchbox-keyboard"
+FILES_${PN} = "${bindir}/ ${libdir}/matchbox-keyboard"
 
 FILES_${PN}-dbg += "${libdir}/gtk-2.0/*/immodules/.debug"
 
@@ -37,13 +32,4 @@ FILES_${PN}-im = "${libdir}/gtk-2.0/*/immodules/*.so"
 
 FILES_${PN}-applet = "${libdir}/matchbox-panel/*.so"
 
-
-do_install_append () {
-	rm -f ${D}${libdir}/gtk-2.0/*/immodules/*.la
-	rm -f ${D}${libdir}/matchbox-panel/*.la
-}
-
-GTKIMMODULES_PACKAGES = "${PN}-im"
-
 RDEPENDS_${PN} = "formfactor dbus-wait"
-RRECOMMENDS_${PN} = "${PN}-applet"

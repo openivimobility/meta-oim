@@ -14,7 +14,7 @@ fi
 xset s off -dpms
 
 # Start on-screen keyboard in 'remote-control' mode
-matchbox-keyboard -d &
+matchbox-keyboard -d small &
 
 case $UNIT in
 	openivi)
