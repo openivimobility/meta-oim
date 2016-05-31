@@ -9,6 +9,7 @@ inherit pkgconfig cmake_qt5 externalsrc
 PV = "0.1"
 PR = "r0"
 
+REQUIRED_DISTRO_FEATURES = "x11"
 
 RDEPENDS_${PN} = "qtbase qtwebkit qtbase-fonts"
 DEPENDS = "qtbase-native qtbase qtwebkit "
