@@ -5,6 +5,7 @@ IMAGE_FEATURES += "splash package-management x11-base x11-sato ssh-server-dropbe
 LICENSE = "MIT"
 
 inherit core-image
+inherit image-repo-manifest
 
 APPEND+="console=ttyS0,115200 quiet"
 
