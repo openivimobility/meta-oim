@@ -13,13 +13,13 @@ PR="4"
 FILES_${PN} = " \
                 /etc/ota/credentials/* \
                 /var/lib/connman/* \
-                /usr/bin/ota-plus-demo-provision.sh \
+                /usr/bin/ota-plus-demo-provision \
                 ${base_libdir}/systemd/system/ota-plus-client.service \
               "
 
 SYSTEMD_SERVICE_${PN} = "ota-plus-demo-provision.service"
 
-RDEPENDS_${PN} = "bash"
+RDEPENDS_${PN} = "python"
 
 do_install() {
   install -d ${D}${systemd_unitdir}/system
@@ -29,7 +29,7 @@ do_install() {
   cp -r ${S}/credentials/ ${D}${sysconfdir}/ota/
 
   install -d ${D}${bindir}
-  install -m 0755 ${S}/ota-plus-demo-provision.sh ${D}${bindir}
+  install -m 0755 ${S}/ota-plus-demo-provision ${D}${bindir}
 
   install -d ${D}${localstatedir}/lib/
   cp -r ${S}/connman/ ${D}${localstatedir}/lib/
