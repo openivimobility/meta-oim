@@ -42,4 +42,4 @@ ArchLinux uses GCC 6.x.x which is quite new and has some problems with older sof
         lib32-llvm-3.7.0-4-x86_64.pkg.tar.xz \
         lib32-llvm-libs-3.7.0-4-x86_64.pkg.tar.xz
         
-pacman will report conflicts with install gcc and standard library, just proceed.
+pacman will report conflicts with installed versions of gcc and gcc-libs, just proceed.
