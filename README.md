@@ -19,7 +19,7 @@ This will take a while (1+ hours). When that completes, you can run:
     runqemu qemux86
 
 ### A note for ArchLinux users
-ArchLinux uses GCC 6.x.x which is quite new and has some problems with older software (or the older software has problems with it). Moreover, when installing Arch on x64, only GCC for 64-bit machines will be installed. GCC is downgraded together with libstdc++ and clang also uses it, so clang and LLVM should be downgraded as well. These packages seem to work well:
+ArchLinux uses GCC 6.x.x which is quite new and has some problems with older software (or the older software has problems with it). Moreover, when installing Arch on x64, only GCC for 64-bit machines will be installed, to compile for 32-bit architectures or even launch binaries, that were compiled for i686 32-bit libraries and "multilib" version of GCC should be installes. Finally, GCC is downgraded together with libstdc++ and clang also uses it, so clang and LLVM should be downgraded as well. These packages seem to work well:
 
     mkdir ~/arch-packages
     cd ~/arch-packages
