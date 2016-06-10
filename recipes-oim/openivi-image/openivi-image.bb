@@ -9,7 +9,7 @@ inherit image-repo-manifest
 
 APPEND+="console=ttyS0,115200 quiet"
 
-IMAGE_INSTALL += " \
+IMAGE_INSTALL_append = " \
 	kernel-modules \
 	linux-firmware \
 	connman \
