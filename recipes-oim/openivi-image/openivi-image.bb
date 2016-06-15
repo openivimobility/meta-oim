@@ -27,5 +27,4 @@ IMAGE_INSTALL_append = " \
 DISTRO_FEATURES_append = " x11 systemd "
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_init_manager = "systemd"
-PACKAGECONFIG_append_pn-qtbase = " icu xcb accessibility"
 

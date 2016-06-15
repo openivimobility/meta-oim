@@ -222,6 +222,13 @@ BB_DISKMON_DIRS = "\
 # libsdl library available on your build system.
 PACKAGECONFIG_append_pn-qemu-native = " sdl"
 PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+
+#
+# QT configuration
+#
+# Some settings to make QT build with x11 (or even build at all)
+PACKAGECONFIG_append_pn-qtbase = " icu xcb accessibility"
+
 # https://bugzilla.yoctoproject.org/show_bug.cgi?id=8553
 # ASSUME_PROVIDED += "libsdl-native"
 
