@@ -23,8 +23,3 @@ IMAGE_INSTALL_append = " \
 	ota-plus-client \
 	xinput \
 	"
-
-DISTRO_FEATURES_append = " x11 systemd "
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-
