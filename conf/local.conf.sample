@@ -84,7 +84,7 @@ MACHINE ??= "genericx86-64"
 # Ultimately when creating custom policy, people will likely end up subclassing 
 # these defaults.
 #
-DISTRO ?= "poky"
+DISTRO ?= "poky-ats"
 # As an example of a subclass there is a "bleeding" edge policy configuration
 # where many versions are set to the absolute latest code from the upstream 
 # source control systems. This is just mentioned here as an example, its not
@@ -222,12 +222,6 @@ BB_DISKMON_DIRS = "\
 # libsdl library available on your build system.
 PACKAGECONFIG_append_pn-qemu-native = " sdl"
 PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
-
-#
-# QT configuration
-#
-# Some settings to make QT build with x11 (or even build at all)
-PACKAGECONFIG_append_pn-qtbase = " icu xcb accessibility"
 
 # https://bugzilla.yoctoproject.org/show_bug.cgi?id=8553
 # ASSUME_PROVIDED += "libsdl-native"
