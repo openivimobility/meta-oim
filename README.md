@@ -10,13 +10,17 @@
     export TEMPLATECONF=meta-oim/conf
     source oe-init-build-env
 
+Run
+
+    vim conf/local.conf
+
+and edit "MACHINE ??= ..." setting to set the target machine. Currently tested are "genericx86-64" for Inter 64-bit processors, and "qemux86"/"qemux86-64" for QEMU emulator on 32-bit and 64-bit architectures respectively.
+ 
 After that run:
 
     bitbake -k openivi-image
 
-This will take a while (1+ hours). When that completes, you can run:
-
-    runqemu qemux86
+This will take a while (1+ hours).
 
 ### A note for ArchLinux users
 ArchLinux uses GCC 6.x.x which is quite new and has some problems with older software (or the older software has problems with it). Moreover, when installing Arch on x64, only GCC for 64-bit machines will be installed, to compile for 32-bit architectures or even launch binaries, that were compiled for i686 32-bit libraries and "multilib" version of GCC should be installes. Finally, GCC is downgraded together with libstdc++ and clang also uses it, so clang and LLVM should be downgraded as well. These packages seem to work well:
@@ -43,3 +47,23 @@ ArchLinux uses GCC 6.x.x which is quite new and has some problems with older sof
         lib32-llvm-libs-3.7.0-4-x86_64.pkg.tar.xz
         
 pacman will report conflicts with installed versions of gcc and gcc-libs, just proceed.
+
+## Making a bootable SD card
+Make sure that your card is not used and unmounted. Then run, replacing ${SD\_DEV} with the device corresponding to SD card on your host machine, i.e. /dev/sdc. /dev/mmcblk0 is the device name on the target machine, leave it as is.
+
+    sudo ../meta-oim/scripst/mkefidisk.sh ${SD_DEV} tmp/deploy/images/genericx86-64/openivi-image-genericx86-64.hddimg /dev/mmcblk0
+
+This may take about 10 minutes.
+
+## Running QEMU emulation
+
+Run 
+
+    runqemu qemux86
+
+or
+
+    runqemu qemux86-64
+
+depending on the MACHINE set in local.conf on building
+
