@@ -439,7 +439,11 @@ if [ -d $ROOTFS_MNT/etc/udev/ ] ; then
 fi
 
 # Add startup.nsh script for automated boot
-echo "bcfg boot rm 0
+echo "if %openivi% == present then
+    bcfg boot rm 0
+else
+    set openivi present
+endif
 bcfg boot add 0 fs0:\\EFI\\BOOT\\bootx64.efi OpenIVI
 fs0:\EFI\BOOT\bootx64.efi" > $EFIDIR/startup.nsh
 
