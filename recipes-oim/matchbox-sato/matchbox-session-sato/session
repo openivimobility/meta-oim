@@ -1,7 +1,5 @@
 #!/bin/sh
 
-UNIT=openivi
-
 . /etc/formfactor/config
 
 if [ "$HAVE_TOUCHSCREEN" = "1" ]; then
@@ -16,22 +14,24 @@ xset s off -dpms
 # Start on-screen keyboard in 'remote-control' mode
 matchbox-keyboard -d small &
 
-case $UNIT in
-	openivi)
-		xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
-		xrandr --addmode HDMI1 1280x800
-		xrandr --output HDMI1 --mode 1280x800 --rotate inverted --auto
-		# Used by the Gen1 OpenIVI units
-		xinput map-to-output "Chalkboard Electronics HID Touchscreen" HDMI1
-		# Used by the Gen2 OpenIVI units
-		xinput map-to-output "pointer:Chalkboard Electronics HID Multi-touch" HDMI1
-		;;
-	rimova)
-		xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
-		xrandr --addmode HDMI1 1024x768p
-		xrandr --output HDMI1 --mode 1024x768p
-		;;
-esac
+if [ -n "$(xinput | grep Multi-touch)" ]; then
+# OpenIVI Gen2
+	xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
+	xrandr --addmode HDMI1 1280x800
+	xrandr --output HDMI1 --mode 1280x800 --auto
+	xinput map-to-output "pointer:Chalkboard Electronics HID Multi-touch" HDMI1
+elif [ -n "$(xinput | grep Touchscreen)" ]; then
+# OpenIVI Gen2
+	xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
+	xrandr --addmode HDMI1 1280x800
+	xrandr --output HDMI1 --mode 1280x800 --rotate inverted --auto
+	xinput map-to-output "Chalkboard Electronics HID Touchscreen" HDMI1
+else
+# Rimova
+	xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
+	xrandr --addmode HDMI1 1024x768p
+	xrandr --output HDMI1 --mode 1024x768p
+fi
 
 # Hack until we have connman 1.31
 # https://01.org/connman/blogs/pflykt/2015/connman-1.31
