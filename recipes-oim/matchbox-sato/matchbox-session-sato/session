@@ -18,14 +18,20 @@ matchbox-keyboard -d small &
 
 case $UNIT in
 	openivi)
-		xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
-		xrandr --addmode HDMI1 1280x800
-		xrandr --output HDMI1 --mode 1280x800 --rotate inverted --auto
-		# Used by the Gen1 OpenIVI units
-		xinput map-to-output "Chalkboard Electronics HID Touchscreen" HDMI1
-		# Used by the Gen2 OpenIVI units
-		xinput map-to-output "pointer:Chalkboard Electronics HID Multi-touch" HDMI1
-		;;
+                if [ -n "$(xinput | grep Multi-touch)" ]; then
+		# Gen2
+                        xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
+                        xrandr --addmode HDMI1 1280x800
+                        xrandr --output HDMI1 --mode 1280x800 --auto
+                        xinput map-to-output "pointer:Chalkboard Electronics HID Multi-touch" HDMI1
+                else
+		# Gen1
+                        xrandr --newmode 1280x800   83.50  1280 1352 1480 1680  800 803 809 831 -hsync +vsyn
+                        xrandr --addmode HDMI1 1280x800
+                        xrandr --output HDMI1 --mode 1280x800 --rotate inverted --auto
+                        xinput map-to-output "Chalkboard Electronics HID Touchscreen" HDMI1
+                fi
+                ;;
 	rimova)
 		xrandr --newmode 1024x768p 64.11 1024 1080 1184 1344 768 769 772 795 -HSync +Vsync
 		xrandr --addmode HDMI1 1024x768p
