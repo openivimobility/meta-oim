@@ -9,10 +9,6 @@ import base64
 import string
 import argparse
 
-
-def print_usage():
-    print("ostree_image.py --image image.tar.gz --repo ./repo --tree ./rootfstree --deltasdir ./deltas --packagename pack --message \"Commit message\"")
-
 def find_last_delta(path, prefix):
     listing = os.listdir(path)
 
@@ -91,10 +87,10 @@ def main(argc, argv):
     # generate static delta
     if(delta_num < 0):
         subprocess.check_call(["ostree", "--repo="+args.repo, "static-delta", "generate", '--empty', '--to='+to, "--inline", "--min-fallback-size=65536"]) 
-        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta0-"+"empty-"+to+".tar.gz", "-C", args.repo+"/deltas", args.repo+"/deltas/"+deltafolder])
+        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta0-"+"empty-"+to+".tar.gz", "--directory="+args.repo+"/deltas/", deltafolder])
     else:
         subprocess.check_call(["ostree", "--repo="+args.repo, "static-delta", "generate", '--from='+delta_to, '--to='+to, "--inline", "--min-fallback-size=65536"]) 
-        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta"+str(delta_num+1)+"-"+delta_to+"-"+to+".tar.gz", "-C", args.repo+"/deltas", args.repo+"/deltas/"+deltafolder])
+        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta"+str(delta_num+1)+"-"+delta_to+"-"+to+".tar.gz", "--directory="+args.repo+"/deltas/", deltafolder])
 
 
 if __name__ == "__main__":
