@@ -39,8 +39,8 @@ def delta_folder_name(from_sha, to_sha):
     from_bin = hexstring_to_binstring(from_sha)
     to_bin = hexstring_to_binstring(to_sha)
 
-    from_b64 = base64.urlsafe_b64encode(from_bin).rstrip("=")
-    to_b64 = base64.urlsafe_b64encode(to_bin).rstrip("=")
+    from_b64 = base64.b64encode(from_bin).rstrip("=").translate(string.maketrans('/', '_'))
+    to_b64 = base64.b64encode(to_bin).rstrip("=").translate(string.maketrans('/', '_'))
 
     if(from_b64):
         namestr = from_b64 + "-" + to_b64
@@ -59,6 +59,9 @@ def main(argc, argv):
     parser.add_argument('-t', '--tree', required=True, help="Where to unpack the tarball")
     parser.add_argument('-d', '--deltasdir', required=True, help="Where delta tarballs should be stored")
     parser.add_argument('-p', '--packagename', required=True, help="Package name that serves as a branch name for OSTree")
+    parser.add_argument('-v', '--packageversion', required=True, help="Package version")
+    parser.add_argument('-n', '--installpath', required=True, help="Path to install the package on target device")
+    parser.add_argument('-u', '--union', required=True, help="If the package overwrites files in install path. Should be \"true\" or \"false\"")
     parser.add_argument('-m', '--message', required=True, help="Commit message")
     args = parser.parse_args()
     
@@ -81,16 +84,34 @@ def main(argc, argv):
 
     # commit    
     to = subprocess.check_output(["ostree", "--repo="+args.repo, "commit", '--subject=\"'+args.message+"\"", '--branch='+args.packagename, "--tree=dir="+args.tree]).strip() 
-
-    deltafolder = delta_folder_name("" if (delta_num < 0) else delta_to, to)
-
     # generate static delta
     if(delta_num < 0):
         subprocess.check_call(["ostree", "--repo="+args.repo, "static-delta", "generate", '--empty', '--to='+to, "--inline", "--min-fallback-size=65536"]) 
-        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta0-"+"empty-"+to+".tar.gz", "--directory="+args.repo+"/deltas/", deltafolder])
     else:
         subprocess.check_call(["ostree", "--repo="+args.repo, "static-delta", "generate", '--from='+delta_to, '--to='+to, "--inline", "--min-fallback-size=65536"]) 
-        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta"+str(delta_num+1)+"-"+delta_to+"-"+to+".tar.gz", "--directory="+args.repo+"/deltas/", deltafolder])
+
+    deltafolder = delta_folder_name("" if (delta_num < 0) else delta_to, to)
+
+    tarfolder = args.deltasdir + "/tar_tmp"
+    if(os.path.exists(tarfolder)):
+        shutil.rmtree(tarfolder)
+
+    os.makedirs(tarfolder)
+    shutil.copytree(args.repo+"/deltas/"+deltafolder[:2], tarfolder + "/" + deltafolder[:2])
+
+    f = open(tarfolder+"/Meta.config","w")
+    f.write("CONFIG_PACKAGE="+args.packagename+"\n")
+    f.write("CONFIG_VERSION="+args.packageversion+"\n")
+    f.write("CONFIG_DELTA_TO="+to+"\n")
+    f.write("CONFIG_PATH="+args.installpath+"\n")
+    f.write("CONFIG_UNION="+args.union+"\n")
+    f.write("CONFIG_DELTA_FROM=" + "" if (delta_num < 0) else delta_to)
+    f.close()
+
+    if(delta_num < 0):
+        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta0-"+"empty-"+to+".tar.gz", "--directory="+tarfolder, "."])
+    else:
+        subprocess.check_call(["tar", "czf", args.deltasdir+"/"+deltaprefix+"-delta"+str(delta_num+1)+"-"+delta_to+"-"+to+".tar.gz", "--directory="+tarfolder, "."])
 
 
 if __name__ == "__main__":
