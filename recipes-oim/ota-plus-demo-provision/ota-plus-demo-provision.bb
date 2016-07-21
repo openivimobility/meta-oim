@@ -1,4 +1,4 @@
-DESCRIPTION = "Provision ota-plus-client"
+DESCRIPTION = "Provision sota-client"
 LICENSE = "MIT | Apache-2.0"
 LIC_FILES_CHKSUM = \
 "file://${S}/README.md;beginline=1;endline=2;md5=fdbea5aa8e93e9429f32abe06722b2bc"
@@ -14,7 +14,7 @@ FILES_${PN} = " \
                 /etc/ota/credentials/* \
                 /var/lib/connman/* \
                 /usr/bin/ota-plus-demo-provision \
-                ${base_libdir}/systemd/system/ota-plus-client.service \
+                ${base_libdir}/systemd/system/ota-plus-demo-provision.service \
               "
 
 SYSTEMD_SERVICE_${PN} = "ota-plus-demo-provision.service"
