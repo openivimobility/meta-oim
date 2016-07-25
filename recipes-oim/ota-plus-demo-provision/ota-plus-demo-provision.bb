@@ -14,12 +14,13 @@ FILES_${PN} = " \
                 /etc/ota/credentials/* \
                 /var/lib/connman/* \
                 /usr/bin/ota-plus-demo-provision \
+                /usr/local/bin/* \
                 ${base_libdir}/systemd/system/ota-plus-client.service \
               "
 
 SYSTEMD_SERVICE_${PN} = "ota-plus-demo-provision.service"
 
-RDEPENDS_${PN} = "python"
+RDEPENDS_${PN} = "python bash"
 
 do_install() {
   install -d ${D}${systemd_unitdir}/system
@@ -33,4 +34,7 @@ do_install() {
 
   install -d ${D}${localstatedir}/lib/
   cp -r ${S}/connman/ ${D}${localstatedir}/lib/
+
+  install -d ${D}/usr/local/bin
+  cp ${S}/openivi-bin/* ${D}/usr/local/bin/
 }
