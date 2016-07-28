@@ -3,7 +3,7 @@ LICENSE = "MIT | Apache-2.0"
 LIC_FILES_CHKSUM = \
 "file://${S}/README.md;beginline=1;endline=2;md5=e5b4c4b4ef35489d85664eeb98d16a49"
 
-EXTERNALSRC = "${THISDIR}/../../../../client/sota_client"
+EXTERNALSRC = "${THISDIR}/../../../../client/rvi_sota_client"
 EXTERNALSRC_BUILD = "${EXTERNALSRC}"
 
 inherit systemd cargo externalsrc
