@@ -21,14 +21,14 @@ FILES_${PN} = " \
 SYSTEMD_SERVICE_${PN} = "sota_client.service"
 
 DEPENDS += " openssl "
-RDEPENDS_${PN} = " libcrypto libssl "
+RDEPENDS_${PN} = " libcrypto libssl dbus "
 
 do_install() {
   install -d ${D}${bindir}
   install -m 0755 target/x86_64-poky-linux/release/sota_client ${D}${bindir}
 
   install -d ${D}${systemd_unitdir}/system
-  install -c ${S}/pkg/sota_client.service ${D}${systemd_unitdir}/system
+  install -c ${S}/run/sota_client.service ${D}${systemd_unitdir}/system
 
   install -d ${D}${sysconfdir}
   echo `git log -1 --pretty=format:%H` > ${D}${sysconfdir}/sota_client.version
