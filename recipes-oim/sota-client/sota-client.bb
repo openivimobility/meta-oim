@@ -14,6 +14,7 @@ BBCLASSEXTEND = "native"
 
 FILES_${PN} = " \
                 /usr/bin/sota_client \
+                /usr/bin/sota-system-info \
                 /etc/sota_client.version \
                 ${base_libdir}/systemd/system/sota_client.service \
               "
@@ -21,11 +22,18 @@ FILES_${PN} = " \
 SYSTEMD_SERVICE_${PN} = "sota_client.service"
 
 DEPENDS += " openssl "
-RDEPENDS_${PN} = " libcrypto libssl dbus "
+RDEPENDS_${PN} = " libcrypto \
+                   libssl \
+                   dbus \
+                   bash \
+                   lshw \
+                   jq \
+                   "
 
 do_install() {
   install -d ${D}${bindir}
   install -m 0755 target/x86_64-poky-linux/release/sota_client ${D}${bindir}
+  install -m 0755 run/sota-system-info ${D}${bindir}
 
   install -d ${D}${systemd_unitdir}/system
   install -c ${S}/run/sota_client.service ${D}${systemd_unitdir}/system

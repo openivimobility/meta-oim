@@ -22,5 +22,4 @@ IMAGE_INSTALL_append = " \
 	ota-plus-demo-provision \
 	sota-client \
 	xinput \
-	lshw \
 	"
