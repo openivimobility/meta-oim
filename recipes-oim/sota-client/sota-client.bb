@@ -16,6 +16,7 @@ FILES_${PN} = " \
                 /usr/bin/sota_client \
                 /usr/bin/system_info.sh \
                 /etc/sota_client.version \
+                /etc/sota_certificates \
                 ${base_libdir}/systemd/system/sota_client.service \
               "
 
@@ -40,4 +41,5 @@ do_install() {
 
   install -d ${D}${sysconfdir}
   echo `git log -1 --pretty=format:%H` > ${D}${sysconfdir}/sota_client.version
+  install -c ${S}/run/sota_certificates ${D}${sysconfdir}
 }
