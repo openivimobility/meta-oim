@@ -445,7 +445,7 @@ else
     set openivi present
 endif
 bcfg boot add 0 fs0:\\EFI\\BOOT\\bootx64.efi OpenIVI
-fs0:\EFI\BOOT\bootx64.efi" > $EFIDIR/startup.nsh
+fs0:\\EFI\\BOOT\\bootx64.efi" > $EFIDIR/startup.nsh
 
 # Call cleanup to unmount devices and images and remove the TMPDIR
 cleanup
