@@ -33,7 +33,7 @@ RDEPENDS_${PN} = " libcrypto \
 
 do_install() {
   install -d ${D}${bindir}
-  install -m 0755 target/x86_64-poky-linux/release/sota_client ${D}${bindir}
+  install -m 0755 target/${TARGET_SYS}/release/sota_client ${D}${bindir}
   install -m 0755 run/system_info.sh ${D}${bindir}
 
   install -d ${D}${systemd_unitdir}/system
