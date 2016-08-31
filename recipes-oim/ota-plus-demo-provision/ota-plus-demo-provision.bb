@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = \
 EXTERNALSRC = "${THISDIR}/../../../../client/ota-plus-demo-provision"
 EXTERNALSRC_BUILD = "${EXTERNALSRC}"
 
-inherit systemd externalsrc
+inherit systemd externalsrc allarch
 
 PR="4"
 
@@ -23,7 +23,7 @@ RDEPENDS_${PN} = "python"
 
 do_install() {
   install -d ${D}${systemd_unitdir}/system
-  install -c ${S}/ota-plus-demo-provision.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${S}/ota-plus-demo-provision.service ${D}${systemd_unitdir}/system
 
   install -d ${D}${sysconfdir}/ota
   cp -r ${S}/credentials/ ${D}${sysconfdir}/ota/
