@@ -9,9 +9,6 @@ inherit image-repo-manifest
 
 APPEND+="console=ttyS0,115200 quiet"
 
-# We don't support/test the ISO image, so don't build it
-NOISO = "1"
-
 # In 512 byte blocks
 BOOTIMG_EXTRA_SPACE = "2000000"
 
