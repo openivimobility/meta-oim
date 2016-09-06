@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 EXTERNALSRC = "${THISDIR}/../../../../client/html5-headunit"
 
 inherit pkgconfig externalsrc systemd
-PV = "0.1"
+PV = "2.0"
 PR = "r0"
 
 SYSTEMD_SERVICE_${PN} = "html5-headunit.service html5-headunit.socket"
