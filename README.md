@@ -2,25 +2,7 @@
 
 ## Build a yocto release with Openivi-html
 
-    git clone -b dizzy http://git.yoctoproject.org/git/poky
-    cd poky
-    git clone -b dizzy https://github.com/meta-qt5/meta-qt5.git
-    git clone -b dizzy git://git.yoctoproject.org/meta-intel
-    git clone https://github.com/openivimobility/meta-oim.git
-    export TEMPLATECONF=meta-oim/conf
-    source oe-init-build-env
-
-Run
-
-    vim conf/local.conf
-
-and edit "MACHINE ??= ..." setting to set the target machine. Currently tested are "genericx86-64" for Inter 64-bit processors, and "qemux86"/"qemux86-64" for QEMU emulator on 32-bit and 64-bit architectures respectively.
- 
-After that run:
-
-    bitbake -k openivi-image
-
-This will take a while (1+ hours).
+See https://openivimobility.github.io/
 
 ### A note for ArchLinux users
 ArchLinux uses GCC 6.x.x which is quite new and has some problems with older software (or the older software has problems with it). Moreover, when installing Arch on x64, only GCC for 64-bit machines will be installed, to compile for 32-bit architectures or even launch binaries, that were compiled for i686 32-bit libraries and "multilib" version of GCC should be installes. Finally, GCC is downgraded together with libstdc++ and clang also uses it, so clang and LLVM should be downgraded as well. These packages seem to work well:
