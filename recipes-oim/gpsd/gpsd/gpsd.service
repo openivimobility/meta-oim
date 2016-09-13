@@ -1,0 +1,7 @@
+[Unit]
+Description=GPS (Global Positioning System) Daemon
+Requires=gpsd.socket
+
+[Service]
+EnvironmentFile=/etc/gps-config
+ExecStart=/usr/sbin/gpsd -N $GPS_DEVICES
