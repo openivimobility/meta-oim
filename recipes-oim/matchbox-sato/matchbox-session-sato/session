@@ -4,11 +4,7 @@ UNIT=openivi
 
 . /etc/formfactor/config
 
-if [ "$HAVE_TOUCHSCREEN" = "1" ]; then
-    SHOWCURSOR="no"
-else
-    SHOWCURSOR="yes"
-fi
+SHOWCURSOR="no"
 
 # Disable screen blanking
 xset s off -dpms
