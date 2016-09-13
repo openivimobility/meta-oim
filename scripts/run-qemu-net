@@ -6,6 +6,7 @@ echo If this hangs, unplug and replug the wifi dongle
 # 0cf3:9271 - TP-Link TL-WN72N AR9271 WiFi
 # 0a12:0001 - CSR Bluetooth dongle
 # 054c:06c1 - Sony RC-S380 NFC Reader
+# 067b:2303 - GPS Mouse
 
 DIR=tmp/deploy/images/genericx86-64/
 IMAGE=$DIR/$1-genericx86-64.ext4
@@ -19,9 +20,7 @@ sudo qemu-system-x86_64 \
   -snapshot \
 	-m 1G \
 	-usb \
-	-usbdevice host:0cf3:9271 \
-	-usbdevice host:0a12:0001 \
-	-usbdevice host:054c:06c1 \
+	-usbdevice host:067b:2303 \
 	-usbdevice tablet \
 	-show-cursor \
 	-vga std \
