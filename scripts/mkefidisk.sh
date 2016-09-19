@@ -264,7 +264,7 @@ fi
 #
 # Prepare the temporary working space
 #
-TMPDIR=$(mktemp -d mkefidisk-XXX) || die "Failed to create temporary mounting directory."
+TMPDIR=$(mktemp -td mkefidisk-XXX) || die "Failed to create temporary mounting directory."
 HDDIMG_MNT=$TMPDIR/hddimg
 HDDIMG_ROOTFS_MNT=$TMPDIR/hddimg_rootfs
 ROOTFS_MNT=$TMPDIR/rootfs
