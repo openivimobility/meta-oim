@@ -27,6 +27,7 @@ IMAGE_INSTALL_append = " \
 	xinput \
 	tor \
 	ssh-keys \
+	zvm-gpsd-config \
 	"
 
 # If debug-tweaks is set, don't start the tor service automatically, because it
