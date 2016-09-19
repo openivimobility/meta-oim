@@ -22,6 +22,7 @@ IMAGE_INSTALL_append = " \
 	qtbase-plugins \
 	qtposition-gpsd \
 	openivi-html5 \
+	zvm-default-url \
 	ota-plus-demo-provision \
 	sota-client \
 	xinput \
