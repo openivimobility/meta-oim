@@ -350,6 +350,7 @@ unmount_device || die "Failed to unmount $DEVICE partitions"
 #
 # Format $DEVICE partitions
 #
+sleep 1
 info "Formatting partitions"
 debug "Formatting $BOOTFS as vfat"
 if [ ! "${DEVICE#/dev/loop}" = "${DEVICE}" ]; then
@@ -444,8 +445,8 @@ echo "if %openivi% == present then
 else
     set openivi present
 endif
-bcfg boot add 0 fs0:\\EFI\\BOOT\\bootx64.efi OpenIVI
-fs0:\\EFI\\BOOT\\bootx64.efi" > $EFIDIR/startup.nsh
+bcfg boot add 0 fs0:\\\\EFI\\\\BOOT\\\\bootx64.efi OpenIVI
+fs0:\\\\EFI\\\\BOOT\\\\bootx64.efi" > $EFIDIR/startup.nsh
 
 # Call cleanup to unmount devices and images and remove the TMPDIR
 cleanup
