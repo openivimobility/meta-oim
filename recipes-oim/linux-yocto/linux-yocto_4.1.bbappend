@@ -4,6 +4,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}:"
 SRC_URI += "\
 	file://wlan.cfg \
 	file://bt.cfg \
+	file://filesystems.cfg \
 	file://tether.cfg \
 	file://touchscreen.cfg \
 	file://usbmon.cfg \
