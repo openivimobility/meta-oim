@@ -148,6 +148,9 @@ unmount() {
 	return 0
 }
 
+# Check if f2fs tools are available
+which mkfs.f2fs > /dev/null || die "mkfs.f2fs not found (apt-get install f2fs-tools?)"
+
 #
 # Parse and validate arguments
 #
@@ -359,8 +362,8 @@ else
 	mkfs.vfat $BOOTFS -n "EFI" >$OUT 2>&1 || die "Failed to format $BOOTFS"
 fi
 
-debug "Formatting $ROOTFS as ext3"
-mkfs.ext3 -F $ROOTFS -L "ROOT" >$OUT 2>&1 || die "Failed to format $ROOTFS"
+debug "Formatting $ROOTFS as f2fs"
+mkfs.f2fs $ROOTFS -l "ROOT" >$OUT 2>&1 || die "Failed to format $ROOTFS"
 
 debug "Formatting swap partition ($SWAP)"
 mkswap $SWAP >$OUT 2>&1 || die "Failed to prepare swap"
