@@ -44,7 +44,15 @@ do
 	sleep 1
 done
 
-openivi-html5 -f -u http://localhost:8000 &
+# default homepage, can be overwritten with a config file
+homepage="http://localhost:8000"
+
+if [ -e /etc/openivi_homepage ]; then
+    homepage=$(cat /etc/openivi_homepage)
+fi
+
+openivi-html5 -f -u $homepage &
+
 
 START_APPLETS=showdesktop,windowselector
 END_APPLETS=clock,battery,systray,startup-notify,notify
