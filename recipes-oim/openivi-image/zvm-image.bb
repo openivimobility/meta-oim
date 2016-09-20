@@ -9,8 +9,7 @@ inherit image-repo-manifest
 
 APPEND+="console=ttyS0,115200 quiet"
 
-# In kb
-IMAGE_ROOTFS_EXTRA_SPACE = "100000"
+NOHDD = "1"
 
 IMAGE_INSTALL_append = " \
 	kernel-modules \
