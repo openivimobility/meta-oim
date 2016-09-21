@@ -9,6 +9,7 @@ inherit image-repo-manifest
 
 APPEND+="console=ttyS0,115200 quiet"
 
+# We only use the ISO image
 NOHDD = "1"
 
 IMAGE_INSTALL_append = " \
