@@ -442,6 +442,14 @@ if [ -d $ROOTFS_MNT/etc/udev/ ] ; then
 	echo "$TARGET_DEVICE" >> $ROOTFS_MNT/etc/udev/mount.blacklist
 fi
 
+# Optionally provision /etc/sota.toml from SOTA_TOML environment variable
+if [ "$SOTA_TOML" ] ; then
+	info "Provisioning using $SOTA_TOML"
+	cp "$SOTA_TOML" "$ROOTFS_MNT/etc/sota.toml"
+	chmod 644 "$ROOTFS_MNT/etc/sota.toml"
+	chown 0:0 "$ROOTFS_MNT/etc/sota.toml"
+fi
+
 # Add startup.nsh script for automated boot
 echo "if %openivi% == present then
     bcfg boot rm 0
