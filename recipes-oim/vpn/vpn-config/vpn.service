@@ -1,0 +1,12 @@
+[Unit]
+Description=VPN connectivity
+After=syslog.target network.target
+
+[Service]
+PrivateTmp=true
+Type=forking
+PIDFile=/var/run/openvpn/vpn.pid
+ExecStart=/usr/sbin/openvpn --daemon --writepid /var/run/openvpn/vpn.pid --cd /etc/openvpn/ --config vpn.conf
+
+[Install]
+WantedBy=multi-user.target
