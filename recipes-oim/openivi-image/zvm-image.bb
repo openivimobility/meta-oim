@@ -26,11 +26,8 @@ IMAGE_INSTALL_append = " \
 	ota-plus-demo-provision \
 	sota-client \
 	xinput \
-	tor \
+	vpn-config \
 	ssh-keys \
 	zvm-gpsd-config \
+	lrzsz \
 	"
-
-# If debug-tweaks is set, don't start the tor service automatically, because it
-# exposes ssh to the world, and debug-tweaks allows no-password root logins
-IMAGE_INSTALL_append = "${@bb.utils.contains('EXTRA_IMAGE_FEATURES', 'debug-tweaks', '', 'tor-config', d)}"

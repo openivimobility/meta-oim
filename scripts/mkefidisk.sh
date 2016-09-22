@@ -118,7 +118,7 @@ device_details() {
 		echo "   model: UNKNOWN"
 	fi
 	if [ -f "/sys/class/block/$DEV/size" ]; then
-		echo "    size: $(($(cat /sys/class/block/$DEV/size) * $BLOCK_SIZE)) bytes"
+		echo "    size: $(($(cat /sys/class/block/$DEV/size) * $BLOCK_SIZE / 1000000)) MB"
 	else
 		echo "    size: UNKNOWN"
 	fi
@@ -448,6 +448,18 @@ if [ "$SOTA_TOML" ] ; then
 	cp "$SOTA_TOML" "$ROOTFS_MNT/etc/sota.toml"
 	chmod 644 "$ROOTFS_MNT/etc/sota.toml"
 	chown 0:0 "$ROOTFS_MNT/etc/sota.toml"
+fi
+
+# Optionally provision /etc/openvpn/client.key and client.crt from CLIENT_CERT
+# environment variable. The .key and .crt extensions are added automatically
+if [ "$CLIENT_CERT" ] ; then
+	info "Provisioning x509 using $CLIENT_CERT"
+	cp "$CLIENT_CERT.key" "$ROOTFS_MNT/etc/openvpn/client.key"
+	cp "$CLIENT_CERT.crt" "$ROOTFS_MNT/etc/openvpn/client.crt"
+	chmod 644 "$ROOTFS_MNT/etc/openvpn/client.key"
+	chown 0:0 "$ROOTFS_MNT/etc/openvpn/client.key"
+	chmod 644 "$ROOTFS_MNT/etc/openvpn/client.crt"
+	chown 0:0 "$ROOTFS_MNT/etc/openvpn/client.crt"
 fi
 
 # Add startup.nsh script for automated boot
