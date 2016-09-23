@@ -15,6 +15,9 @@ BOOTIMG_EXTRA_SPACE = "2000000"
 # In kb
 IMAGE_ROOTFS_EXTRA_SPACE = "100000"
 
+# We only use the ISO image
+NOHDD = "1"
+
 IMAGE_INSTALL_append = " \
 	kernel-modules \
 	linux-firmware \

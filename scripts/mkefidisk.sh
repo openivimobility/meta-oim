@@ -118,7 +118,7 @@ device_details() {
 		echo "   model: UNKNOWN"
 	fi
 	if [ -f "/sys/class/block/$DEV/size" ]; then
-		echo "    size: $(($(cat /sys/class/block/$DEV/size) * $BLOCK_SIZE)) bytes"
+		echo "    size: $(($(cat /sys/class/block/$DEV/size) * $BLOCK_SIZE / 1000000)) MB"
 	else
 		echo "    size: UNKNOWN"
 	fi
@@ -147,6 +147,9 @@ unmount() {
 	fi
 	return 0
 }
+
+# Check if f2fs tools are available
+which mkfs.f2fs > /dev/null || die "mkfs.f2fs not found (apt-get install f2fs-tools?)"
 
 #
 # Parse and validate arguments
@@ -350,6 +353,7 @@ unmount_device || die "Failed to unmount $DEVICE partitions"
 #
 # Format $DEVICE partitions
 #
+sleep 1
 info "Formatting partitions"
 debug "Formatting $BOOTFS as vfat"
 if [ ! "${DEVICE#/dev/loop}" = "${DEVICE}" ]; then
@@ -358,8 +362,8 @@ else
 	mkfs.vfat $BOOTFS -n "EFI" >$OUT 2>&1 || die "Failed to format $BOOTFS"
 fi
 
-debug "Formatting $ROOTFS as ext3"
-mkfs.ext3 -F $ROOTFS -L "ROOT" >$OUT 2>&1 || die "Failed to format $ROOTFS"
+debug "Formatting $ROOTFS as f2fs"
+mkfs.f2fs $ROOTFS -l "ROOT" >$OUT 2>&1 || die "Failed to format $ROOTFS"
 
 debug "Formatting swap partition ($SWAP)"
 mkswap $SWAP >$OUT 2>&1 || die "Failed to prepare swap"
@@ -438,14 +442,34 @@ if [ -d $ROOTFS_MNT/etc/udev/ ] ; then
 	echo "$TARGET_DEVICE" >> $ROOTFS_MNT/etc/udev/mount.blacklist
 fi
 
+# Optionally provision /etc/sota.toml from SOTA_TOML environment variable
+if [ "$SOTA_TOML" ] ; then
+	info "Provisioning using $SOTA_TOML"
+	cp "$SOTA_TOML" "$ROOTFS_MNT/etc/sota.toml"
+	chmod 644 "$ROOTFS_MNT/etc/sota.toml"
+	chown 0:0 "$ROOTFS_MNT/etc/sota.toml"
+fi
+
+# Optionally provision /etc/openvpn/client.key and client.crt from CLIENT_CERT
+# environment variable. The .key and .crt extensions are added automatically
+if [ "$CLIENT_CERT" ] ; then
+	info "Provisioning x509 using $CLIENT_CERT"
+	cp "$CLIENT_CERT.key" "$ROOTFS_MNT/etc/openvpn/client.key"
+	cp "$CLIENT_CERT.crt" "$ROOTFS_MNT/etc/openvpn/client.crt"
+	chmod 644 "$ROOTFS_MNT/etc/openvpn/client.key"
+	chown 0:0 "$ROOTFS_MNT/etc/openvpn/client.key"
+	chmod 644 "$ROOTFS_MNT/etc/openvpn/client.crt"
+	chown 0:0 "$ROOTFS_MNT/etc/openvpn/client.crt"
+fi
+
 # Add startup.nsh script for automated boot
 echo "if %openivi% == present then
     bcfg boot rm 0
 else
     set openivi present
 endif
-bcfg boot add 0 fs0:\\EFI\\BOOT\\bootx64.efi OpenIVI
-fs0:\\EFI\\BOOT\\bootx64.efi" > $EFIDIR/startup.nsh
+bcfg boot add 0 fs0:\\\\EFI\\\\BOOT\\\\bootx64.efi OpenIVI
+fs0:\\\\EFI\\\\BOOT\\\\bootx64.efi" > $EFIDIR/startup.nsh
 
 # Call cleanup to unmount devices and images and remove the TMPDIR
 cleanup
