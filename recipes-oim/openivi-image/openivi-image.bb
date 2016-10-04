@@ -33,6 +33,7 @@ IMAGE_INSTALL_append = " \
 	xinput \
 	tor \
 	ssh-keys \
+	usb-key-provision \
 	"
 
 # If debug-tweaks is set, don't start the tor service automatically, because it

@@ -1,0 +1,13 @@
+#! /bin/sh
+
+SOTA_TOML=$1/sota.toml
+
+if [ -f $SOTA_TOML ] ; then
+	echo "Copying $SOTA_TOML to /etc"
+	cp $SOTA_TOML /etc
+	systemctl restart sota_client
+else
+  echo "$SOTA_TOML not found"
+fi
+# F2fs is pretty aggressive at avoiding write back. Ensure that the changes are persisted.
+sync
