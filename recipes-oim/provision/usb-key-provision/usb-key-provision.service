@@ -1,0 +1,12 @@
+[Unit]
+Description="Watch /media/provision for updated sota.toml"
+BindsTo=media-provision.mount
+After=media-provision.mount
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/usb-key-provision /media/provision
+TimeoutSec=10
+
+[Install]
+WantedBy=media-provision.mount

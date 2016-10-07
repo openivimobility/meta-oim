@@ -1,0 +1,10 @@
+[Unit]
+Description="Mount USB stick"
+Requisite=dev-disk-by\x2dlabel-PROVISION.device
+
+[Mount]
+What=/dev/disk/by-label/PROVISION
+Where=/media/provision
+
+[Install]
+WantedBy=dev-disk-by\x2dlabel-PROVISION.device
