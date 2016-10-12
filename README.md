@@ -33,7 +33,7 @@ pacman will report conflicts with installed versions of gcc and gcc-libs, just p
 ## Making a bootable SD card
 Make sure that your card is not used and unmounted. Then run, replacing ${SD\_DEV} with the device corresponding to SD card on your host machine, i.e. /dev/sdc. /dev/mmcblk0 is the device name on the target machine, leave it as is.
 
-    sudo ../meta-oim/scripst/mkefidisk.sh ${SD_DEV} tmp/deploy/images/genericx86-64/openivi-image-genericx86-64.hddimg /dev/mmcblk0
+    sudo ../meta-oim/scripts/mkefidisk.sh ${SD_DEV} tmp/deploy/images/genericx86-64/openivi-image-genericx86-64.iso /dev/mmcblk0
 
 This may take about 10 minutes.
 
