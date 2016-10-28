@@ -3,9 +3,6 @@ LICENSE = "MIT | Apache-2.0"
 LIC_FILES_CHKSUM = \
 "file://${S}/README.md;beginline=1;endline=2;md5=4d8c70494276995fd1aefccb96be9f7d"
 
-EXTERNALSRC = "${THISDIR}/../../../../client/rvi_sota_client"
-EXTERNALSRC_BUILD = "${EXTERNALSRC}"
-
 inherit cargo systemd
 
 S = "${WORKDIR}/git"
