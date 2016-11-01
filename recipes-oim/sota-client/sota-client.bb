@@ -1,7 +1,8 @@
 DESCRIPTION = "sota-client rust recipe"
-LICENSE = "MIT | Apache-2.0"
-LIC_FILES_CHKSUM = \
-"file://${S}/README.md;beginline=1;endline=2;md5=4d8c70494276995fd1aefccb96be9f7d"
+HOMEPAGE = "https://github.com/advancedtelematic/rvi_sota_client"
+
+LICENSE = "MPL-2.0"
+LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=65d26fcc2f35ea6a181ac777e42db1ea"
 
 inherit cargo systemd
 
