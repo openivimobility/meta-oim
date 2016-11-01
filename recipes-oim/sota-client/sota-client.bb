@@ -8,8 +8,8 @@ inherit cargo systemd
 
 S = "${WORKDIR}/git"
 
-SRCREV = "20d9ebb51b3bcace6558eabda71a078df97a4e48"
-PV = "0.2.19+20d9eb"
+SRCREV = "4b50e1cb0945adbbcc07dfcb65a9252e7523105d"
+PV = "0.2.21+4b50e1"
 
 BBCLASSEXTEND = "native"
 
