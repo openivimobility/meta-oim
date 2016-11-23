@@ -30,4 +30,4 @@ IMAGE_INSTALL_append = " \
 	lrzsz \
 	"
 
-IMAGE_INSTALL_append = "${@bb.utils.contains('DISTRO_FEATURES', 'sota', '', 'ota-plus-demo-provision', d)}"
+IMAGE_INSTALL_append = "${@bb.utils.contains('DISTRO_FEATURES', 'sota', '', ' ota-plus-demo-provision', d)}"
