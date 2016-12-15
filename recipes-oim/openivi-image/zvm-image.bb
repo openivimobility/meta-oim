@@ -23,11 +23,11 @@ IMAGE_INSTALL_append = " \
 	qtposition-gpsd \
 	openivi-html5 \
 	zvm-default-url \
-	ota-plus-demo-provision \
-	sota-client \
 	xinput \
 	vpn-config \
 	ssh-keys \
 	zvm-gpsd-config \
 	lrzsz \
 	"
+
+IMAGE_INSTALL_append = "${@bb.utils.contains('DISTRO_FEATURES', 'sota', '', ' ota-plus-demo-provision', d)}"
