@@ -117,7 +117,11 @@ do_install() {
   install -m 0755 run/sota_sysinfo.sh ${D}${bindir}
 
   install -d ${D}${systemd_unitdir}/system
-  install -c ${S}/run/sota_client.service ${D}${systemd_unitdir}/system
+  if ${@bb.utils.contains('DISTRO_FEATURES', 'sota', 'true', 'false', d)}; then
+    install -c ${S}/run/sota_client_ostree.service ${D}${systemd_unitdir}/system/sota_client.service
+  else
+    install -c ${S}/run/sota_client_yocto.service ${D}${systemd_unitdir}/system/sota_client.service
+  fi
 
   install -d ${D}${sysconfdir}
   echo `git log -1 --pretty=format:%H` > ${D}${sysconfdir}/sota_client.version
