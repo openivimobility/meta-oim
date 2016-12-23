@@ -7,12 +7,16 @@ BBFILES ?= ""
 
 BBLAYERS ?= " \
   ##OEROOT##/meta \
-  ##OEROOT##/meta-intel \
+  ##OEROOT##/meta-raspberrypi \
   ##OEROOT##/meta-yocto \
   ##OEROOT##/meta-yocto-bsp \
   ##OEROOT##/meta-qt5 \
   ##OEROOT##/meta-rust \
   ##OEROOT##/meta-oim \
+  ##OEROOT##/meta-meta-updater \
+  ##OEROOT##/meta-meta-updater-raspberrypi \
+  ##OEROOT##/meta-openembedded/meta-oe \
+  ##OEROOT##/meta-openembedded/meta-filesystems \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta \
