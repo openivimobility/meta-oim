@@ -12,9 +12,10 @@ SECTION = "utils"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=29dd0c35d7e391bb8d515eacf7592e00"
 
-DEPENDS = "flex-native bison-native onig"
+DEPENDS = "flex-native bison-native"
 
 SRC_URI = "https://github.com/stedolan/${BPN}/releases/download/${BPN}-${PV}/${BPN}-${PV}.tar.gz \
+	   file://Support-without-oniguruma.patch \
 "
 
 SRC_URI[md5sum] = "0933532b086bd8b6a41c1b162b1731f9"
